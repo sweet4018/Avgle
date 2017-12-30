@@ -7,3 +7,13 @@
 */
 
 "Sign Up" = "註冊";
+
+"Registration Error" = "註冊失敗";
+
+"Please make sure you provide your name, email address and password to complete the registration." = "請檢查您的名字、信箱及密碼，以便完成註冊。";
+
+"Registration" = "註冊";
+
+"Email Verification" = "信箱驗證";
+
+"We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up" = "我們剛剛寄了驗證信至您的信箱，點擊驗證信中的驗證連結，完成註冊。";

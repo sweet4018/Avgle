@@ -14,5 +14,6 @@ pod "SDWebImage"
 pod "FDFullscreenPopGesture", "~> 1.1"
 pod "SwiftyJSON"
 pod 'Firebase/Core'
+pod 'Firebase/Auth’
 
 end

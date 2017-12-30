@@ -7,3 +7,13 @@
 */
 
 "Sign Up" = "Sign Up";
+
+"Registration Error" = "Registration Error";
+
+"Please make sure you provide your name, email address and password to complete the registration." = "Please make sure you provide your name, email address and password to complete the registration.";
+
+"Registration" = "Registration";
+
+"Email Verification" = "Email Verification";
+
+"We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up" = "We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up";

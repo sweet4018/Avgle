@@ -175,7 +175,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ztc-Vb-cgJ">
-                                <rect key="frame" x="30" y="130" width="354" height="240"/>
+                                <rect key="frame" x="30" y="110" width="354" height="240"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="iaa-aR-eom">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="173"/>
