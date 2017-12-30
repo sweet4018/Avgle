@@ -1,0 +1,57 @@
+
+/* Class = "UIButton"; normalTitle = "SIGN IN WITH EMAIL"; ObjectID = "0Of-r7-RDZ"; */
+"0Of-r7-RDZ.normalTitle" = "SIGN IN WITH EMAIL";
+
+/* Class = "UIButton"; normalTitle = "RESET MY PASSWORD"; ObjectID = "1mv-uT-WQi"; */
+"1mv-uT-WQi.normalTitle" = "RESET MY PASSWORD";
+
+/* Class = "UINavigationItem"; title = "Log In"; ObjectID = "1yz-bl-2bk"; */
+"1yz-bl-2bk.title" = "Log In";
+
+/* Class = "UITextField"; placeholder = "PASSWORD"; ObjectID = "4Ze-EE-vIX"; */
+"4Ze-EE-vIX.placeholder" = "PASSWORD";
+
+/* Class = "UITextField"; placeholder = "ENTER YOUR EMAIL"; ObjectID = "79p-iy-zHM"; */
+"79p-iy-zHM.placeholder" = "ENTER YOUR EMAIL";
+
+/* Class = "UITextField"; placeholder = "ENTER YOUR PASSWORD"; ObjectID = "Ehf-Ak-NgH"; */
+"Ehf-Ak-NgH.placeholder" = "ENTER YOUR PASSWORD";
+
+/* Class = "UITextField"; placeholder = "EMAIL"; ObjectID = "GPB-Nm-6eP"; */
+"GPB-Nm-6eP.placeholder" = "EMAIL";
+
+/* Class = "UITextField"; placeholder = "NAME"; ObjectID = "GiM-lI-nbG"; */
+"GiM-lI-nbG.placeholder" = "NAME";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "NMs-pH-Ihl"; */
+"NMs-pH-Ihl.title" = "Cancel";
+
+/* Class = "UILabel"; text = "Welcome"; ObjectID = "OGw-Em-zlE"; */
+"OGw-Em-zlE.text" = "Welcome";
+
+/* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "PB3-6G-R2t"; */
+"PB3-6G-R2t.normalTitle" = "SIGN UP";
+
+/* Class = "UINavigationItem"; title = "Sign Up"; ObjectID = "TJz-fe-8Jl"; */
+"TJz-fe-8Jl.title" = "Sign Up";
+
+/* Class = "UIButton"; normalTitle = "FORGOT PASSWORD?"; ObjectID = "Xab-36-BhO"; */
+"Xab-36-BhO.normalTitle" = "FORGOT PASSWORD?";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "YLe-8y-pTw"; */
+"YLe-8y-pTw.title" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "LOG IN"; ObjectID = "Ylm-sS-9Pg"; */
+"Ylm-sS-9Pg.normalTitle" = "LOG IN";
+
+/* Class = "UIButton"; normalTitle = "CREATE ACCOUNT"; ObjectID = "q4k-rt-r1n"; */
+"q4k-rt-r1n.normalTitle" = "CREATE ACCOUNT";
+
+/* Class = "UITextField"; placeholder = "EMAIL"; ObjectID = "qJK-At-tgC"; */
+"qJK-At-tgC.placeholder" = "EMAIL";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN WITH GOOGLE"; ObjectID = "rOw-Yv-svH"; */
+"rOw-Yv-svH.normalTitle" = "SIGN IN WITH GOOGLE";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN WITH FACEBOOK"; ObjectID = "ymo-FH-O1P"; */
+"ymo-FH-O1P.normalTitle" = "SIGN IN WITH FACEBOOK";

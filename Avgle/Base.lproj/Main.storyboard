@@ -175,7 +175,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ztc-Vb-cgJ">
-                                <rect key="frame" x="30" y="110" width="354" height="240"/>
+                                <rect key="frame" x="30" y="130" width="354" height="240"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="iaa-aR-eom">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="173"/>
@@ -363,7 +363,7 @@
         <!--Sign Up-->
         <scene sceneID="Gpd-ZW-0fD">
             <objects>
-                <viewController id="vmY-Wy-ywT" sceneMemberID="viewController">
+                <viewController id="vmY-Wy-ywT" customClass="SignUpViewController" customModule="Avgle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FvQ-YK-iOC"/>
                         <viewControllerLayoutGuide type="bottom" id="DOF-Sl-w8J"/>
@@ -376,7 +376,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="PUR-rN-wTn">
-                                <rect key="frame" x="30" y="130" width="354" height="228"/>
+                                <rect key="frame" x="30" y="110" width="354" height="228"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Tbi-4A-NhU">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="148"/>
@@ -510,6 +510,9 @@
                                                 <real key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="registerAccountAction:" destination="vmY-Wy-ywT" eventType="touchUpInside" id="Uxs-6g-5Vr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -535,6 +538,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="qJK-At-tgC" id="JUK-MD-TL0"/>
+                        <outlet property="nameTextField" destination="GiM-lI-nbG" id="WHc-RR-K3s"/>
+                        <outlet property="passwordTextField" destination="4Ze-EE-vIX" id="enG-MG-nry"/>
+                        <outlet property="registerAccount" destination="PB3-6G-R2t" id="UMu-Wv-45N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKG-fj-yYm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="mpx-bG-6eg" userLabel="Exit" sceneMemberID="exit"/>

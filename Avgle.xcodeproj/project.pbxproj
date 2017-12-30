@@ -19,6 +19,8 @@
 		DB2C08901FF52E2300C4109D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */; };
 		DB2C08921FF5354200C4109D /* UITextField+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C08911FF5354200C4109D /* UITextField+Placeholder.swift */; };
 		DB2C08941FF5370300C4109D /* UINavigationController+Transparent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C08931FF5370300C4109D /* UINavigationController+Transparent.swift */; };
+		DB44067A1FF72B340026E321 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4406791FF72B340026E321 /* SignUpViewController.swift */; };
+		DB4406811FF72DB30026E321 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB4406831FF72DB30026E321 /* Localizable.strings */; };
 		DB5CA62D1FC945550013CD24 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CA62C1FC945550013CD24 /* BaseTabBarViewController.swift */; };
 		DB6283D31FC96B1100514164 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6283D21FC96B1100514164 /* BaseViewController.swift */; };
 		DB794A251FD2467C004E3C43 /* VideoCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB794A241FD2467C004E3C43 /* VideoCollectionModel.swift */; };
@@ -66,6 +68,14 @@
 		DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		DB2C08911FF5354200C4109D /* UITextField+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Placeholder.swift"; sourceTree = "<group>"; };
 		DB2C08931FF5370300C4109D /* UINavigationController+Transparent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transparent.swift"; sourceTree = "<group>"; };
+		DB4406781FF729110026E321 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB4406791FF72B340026E321 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DB44067B1FF72D370026E321 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		DB44067C1FF72D370026E321 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		DB44067F1FF72D8A0026E321 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		DB4406801FF72D8A0026E321 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		DB4406821FF72DB30026E321 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DB4406841FF72DCE0026E321 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DB5CA62C1FC945550013CD24 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
 		DB6283D21FC96B1100514164 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DB794A241FD2467C004E3C43 /* VideoCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionModel.swift; sourceTree = "<group>"; };
@@ -182,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				DB0528AC1FC93AAC00C6CFE9 /* Assets.xcassets */,
+				DB4406831FF72DB30026E321 /* Localizable.strings */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -199,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				DB0528B11FC93AAC00C6CFE9 /* Info.plist */,
+				DB4406781FF729110026E321 /* GoogleService-Info.plist */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -254,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */,
+				DB4406791FF72B340026E321 /* SignUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -447,6 +460,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = DB0528991FC93AAC00C6CFE9;
 			productRefGroup = DB0528A31FC93AAC00C6CFE9 /* Products */;
@@ -466,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB0528B01FC93AAC00C6CFE9 /* LaunchScreen.storyboard in Resources */,
+				DB4406811FF72DB30026E321 /* Localizable.strings in Resources */,
 				DB0528AD1FC93AAC00C6CFE9 /* Assets.xcassets in Resources */,
 				DB0528AB1FC93AAC00C6CFE9 /* Main.storyboard in Resources */,
 			);
@@ -550,6 +565,7 @@
 				DB118FA21FF3DF840035D9C4 /* LineButton.swift in Sources */,
 				DBEDCE161FC96FAC00A097F7 /* VideoCollectionsViewController.swift in Sources */,
 				DB2C08921FF5354200C4109D /* UITextField+Placeholder.swift in Sources */,
+				DB44067A1FF72B340026E321 /* SignUpViewController.swift in Sources */,
 				DBABDB511FC95A600035D1EF /* BaseNavigationViewController.swift in Sources */,
 				DB87E9F41FC9893100E28805 /* VideoCategoriesModel.swift in Sources */,
 				DB0528A61FC93AAC00C6CFE9 /* AppDelegate.swift in Sources */,
@@ -594,6 +610,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				DBEDCE211FC971D200A097F7 /* Base */,
+				DB44067B1FF72D370026E321 /* zh-Hant */,
+				DB44067F1FF72D8A0026E321 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -602,8 +620,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				DBEDCE221FC971D200A097F7 /* Base */,
+				DB44067C1FF72D370026E321 /* zh-Hant */,
+				DB4406801FF72D8A0026E321 /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DB4406831FF72DB30026E321 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB4406821FF72DB30026E321 /* en */,
+				DB4406841FF72DCE0026E321 /* zh-Hant */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

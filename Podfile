@@ -13,5 +13,6 @@ pod "MJRefresh"
 pod "SDWebImage"
 pod "FDFullscreenPopGesture", "~> 1.1"
 pod "SwiftyJSON"
+pod 'Firebase/Core'
 
 end

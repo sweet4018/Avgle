@@ -1,8 +1,27 @@
 PODS:
   - Alamofire (4.5.1)
   - FDFullscreenPopGesture (1.1)
+  - Firebase/Core (4.7.0):
+    - FirebaseAnalytics (= 4.0.5)
+    - FirebaseCore (= 4.0.12)
+  - FirebaseAnalytics (4.0.5):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
+  - FirebaseCore (4.0.12):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (2.0.7)
+  - GoogleToolboxForMac/Defines (2.1.3)
+  - GoogleToolboxForMac/NSData+zlib (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
   - Kingfisher (4.2.0)
   - MJRefresh (3.1.14.1)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
   - SDWebImage (4.1.2):
     - SDWebImage/Core (= 4.1.2)
   - SDWebImage/Core (4.1.2)
@@ -13,6 +32,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - FDFullscreenPopGesture (~> 1.1)
+  - Firebase/Core
   - Kingfisher
   - MJRefresh
   - SDWebImage
@@ -23,13 +43,19 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  Firebase: dbfb98ccec2dcfcd21ab9cc1b4981a3f3c8c5e26
+  FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
+  FirebaseCore: 6cf108b63997bc08c04a1ffa55a3ac0d71a59ffc
+  FirebaseInstanceID: 148c25c986c8699e67304b114e365713dce467f2
+  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
   MJRefresh: 238e6a37e2dba12160ee3b79f6d2a2b26abcab42
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: d3d6de8db9f79356e5e4d762b578a07634f13690
+PODFILE CHECKSUM: b894378b1111a4c1080d58bff8c32f79261c51d7
 
 COCOAPODS: 1.2.0

@@ -10,8 +10,6 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
 
-    
-    
     // MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
