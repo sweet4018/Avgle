@@ -38,3 +38,10 @@ struct theme {
 func CYColor(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {
     return UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
 }
+
+/** 跳至主畫面 */
+func goMainView(_ viewController: UIViewController) {
+    
+    UIApplication.shared.keyWindow?.rootViewController = BaseTabBarViewController()
+    viewController.dismiss(animated: true, completion: nil)
+}

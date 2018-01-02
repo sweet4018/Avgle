@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import Firebase
+import GoogleSignIn
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
     // MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.title = ""
+        
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,14 +35,75 @@ class WelcomeViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func facebookLogin(_ sender: Any) {
+        
+        let fbLoginManager = FBSDKLoginManager()
+        fbLoginManager.logOut()
+        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            
+            if let error = error {
+                print("錯誤登入:\(error.localizedDescription)")
+                return
+            }
+            
+            guard let accessToken = FBSDKAccessToken.current() else {
+                
+                print("無法得到使用者Token")
+                return
+            }
+            
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            //呼叫 Firebase APIs 執行登入
+            Auth.auth().signIn(with: credential, completion: { (user, error) in
+                
+                if let error = error {
+                    print("登入錯誤:\(error.localizedDescription)")
+                    
+                    AlertControllerTool.alertView.showAlertViewWithOK(title: "Login Error", message: error.localizedDescription, viewController: self, okAction: nil)
+                    return
+                }
+                //呈現主畫面
+                goMainView(self)
+                
+            })
+        }
     }
-    */
+    
+    @IBAction func googleLogin(_ sender: Any) {
+         GIDSignIn.sharedInstance().signIn()
+    }
+    
+    //MARK: Google Login Delegate
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if error != nil {
+            return
+        }
+        
+        guard let authentication = user.authentication else {
+            return
+        }
+        
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+        Auth.auth().signIn(with: credential) { (user, error) in
+            
+            if let error = error {
+                print("登入失敗:\(error.localizedDescription)")
+                
+                AlertControllerTool.alertView.showAlertViewWithOK(title: "Login Error", message: error.localizedDescription, viewController: self)
+            }
+            
+            //呈現主畫面
+            goMainView(self)
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        
+    }
+    
 
 }

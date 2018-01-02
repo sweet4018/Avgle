@@ -13,16 +13,38 @@ class AlertControllerTool: NSObject {
     static let alertView = AlertControllerTool()
     
     ///有一個OK的AlertView
-    func showAlertViewWithOK (title: String, message: String, viewController:UIViewController, okAction: @escaping () -> Void) {
+    func showAlertViewWithOK (title: String, message: String, viewController:UIViewController, okAction: (() -> Swift.Void)? = nil) {
         
         let alertController = UIAlertController(title: NSLocalizedString(title, comment: ""),
                                                 message: NSLocalizedString(message, comment: ""),
                                                 preferredStyle: .alert)
         let okayAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            okAction()
+            if let okayAction = okAction {
+                okayAction()
+            }        
         }
         
         alertController.addAction(okayAction)
+        viewController.present(alertController, animated: true, completion: nil)
+    }
+    
+    /// 一個警告視窗，多個按鈕
+    ///
+    /// - Parameters:
+    ///   - title: 標題
+    ///   - message: 訊息
+    ///   - viewController: 在哪個ViewConttoller
+    ///   - actionArray: 動作陣列
+    func showAlertViewWithActionArray (title: String, message: String, viewController: UIViewController, actionArray: Array<UIAlertAction>) {
+        
+        let alertController = UIAlertController(title: NSLocalizedString(title, comment: ""),
+                                                message: NSLocalizedString(message, comment: ""),
+                                                preferredStyle: .alert)
+        
+        for action in actionArray {
+            alertController.addAction(action)
+        }
+        
         viewController.present(alertController, animated: true, completion: nil)
     }
     

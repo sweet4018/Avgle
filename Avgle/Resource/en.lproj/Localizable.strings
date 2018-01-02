@@ -17,3 +17,19 @@
 "Email Verification" = "Email Verification";
 
 "We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up" = "We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up";
+
+"Login Error" = "Login Error";
+
+"Both fields must mot be blank." = "Both fields must mot be blank.";
+
+"You haven't confirmed your email address yet. We sent you a confirmation email when you sign up. Please click the verification link in that email. If you need us to send the confirmation email again, please tap Resend Email." = "You haven't confirmed your email address yet. We sent you a confirmation email when you sign up. Please click the verification link in that email. If you need us to send the confirmation email again, please tap Resend Email.";
+
+"Input Error" = "Input Error";
+
+"Please provide your email address for password reset." = "Please provide your email address for password reset.";
+
+"Password Reset Follow-up" = "Password Reset Follow-up";
+
+"Password Reset Error" = "Password Reset Error";
+
+"We have just sent you a password reset email. Please check your inbox and follow the instructions to reset your password." ="We have just sent you a password reset email. Please check your inbox and follow the instructions to reset your password.";

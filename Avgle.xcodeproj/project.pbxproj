@@ -15,6 +15,7 @@
 		DB0528BB1FC93AAC00C6CFE9 /* AvgleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0528BA1FC93AAC00C6CFE9 /* AvgleTests.swift */; };
 		DB0528C61FC93AAC00C6CFE9 /* AvgleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0528C51FC93AAC00C6CFE9 /* AvgleUITests.swift */; };
 		DB0528DC1FC9411000C6CFE9 /* Commom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0528DB1FC9411000C6CFE9 /* Commom.swift */; };
+		DB117B4E1FFB5F17002FC397 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB117B4D1FFB5F17002FC397 /* ResetPasswordViewController.swift */; };
 		DB118FA21FF3DF840035D9C4 /* LineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB118FA11FF3DF840035D9C4 /* LineButton.swift */; };
 		DB2C08901FF52E2300C4109D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */; };
 		DB2C08921FF5354200C4109D /* UITextField+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C08911FF5354200C4109D /* UITextField+Placeholder.swift */; };
@@ -27,6 +28,7 @@
 		DB6283D31FC96B1100514164 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6283D21FC96B1100514164 /* BaseViewController.swift */; };
 		DB794A251FD2467C004E3C43 /* VideoCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB794A241FD2467C004E3C43 /* VideoCollectionModel.swift */; };
 		DB87E9F41FC9893100E28805 /* VideoCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB87E9F31FC9893100E28805 /* VideoCategoriesModel.swift */; };
+		DB8843A01FFB2AC60084C319 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB88439F1FFB2AC60084C319 /* LoginViewController.swift */; };
 		DBABDB511FC95A600035D1EF /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABDB501FC95A600035D1EF /* BaseNavigationViewController.swift */; };
 		DBEDCE0E1FC96F7300A097F7 /* VideoCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDCE0D1FC96F7300A097F7 /* VideoCategoriesViewController.swift */; };
 		DBEDCE161FC96FAC00A097F7 /* VideoCollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDCE151FC96FAC00A097F7 /* VideoCollectionsViewController.swift */; };
@@ -66,6 +68,7 @@
 		DB0528C51FC93AAC00C6CFE9 /* AvgleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgleUITests.swift; sourceTree = "<group>"; };
 		DB0528C71FC93AAC00C6CFE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB0528DB1FC9411000C6CFE9 /* Commom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commom.swift; sourceTree = "<group>"; };
+		DB117B4D1FFB5F17002FC397 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		DB118FA11FF3DF840035D9C4 /* LineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineButton.swift; sourceTree = "<group>"; };
 		DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		DB2C08911FF5354200C4109D /* UITextField+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Placeholder.swift"; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		DB6283D21FC96B1100514164 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DB794A241FD2467C004E3C43 /* VideoCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionModel.swift; sourceTree = "<group>"; };
 		DB87E9F31FC9893100E28805 /* VideoCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCategoriesModel.swift; sourceTree = "<group>"; };
+		DB88439F1FFB2AC60084C319 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DBABDB501FC95A600035D1EF /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		DBEDCE0D1FC96F7300A097F7 /* VideoCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCategoriesViewController.swift; sourceTree = "<group>"; };
 		DBEDCE151FC96FAC00A097F7 /* VideoCollectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionsViewController.swift; sourceTree = "<group>"; };
@@ -167,8 +171,7 @@
 				DB0528D41FC93FE800C6CFE9 /* Tools */,
 				DB0528D51FC93FF100C6CFE9 /* Other */,
 				DB0528D31FC93FB100C6CFE9 /* Resource */,
-				DB0528A91FC93AAC00C6CFE9 /* Main.storyboard */,
-				DB0528AE1FC93AAC00C6CFE9 /* LaunchScreen.storyboard */,
+				DBD2CCA71FFB769B00F79CF6 /* Storyboard */,
 			);
 			path = Avgle;
 			sourceTree = "<group>";
@@ -271,6 +274,8 @@
 			children = (
 				DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */,
 				DB4406791FF72B340026E321 /* SignUpViewController.swift */,
+				DB88439F1FFB2AC60084C319 /* LoginViewController.swift */,
+				DB117B4D1FFB5F17002FC397 /* ResetPasswordViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -326,6 +331,15 @@
 				DB87E9F31FC9893100E28805 /* VideoCategoriesModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DBD2CCA71FFB769B00F79CF6 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				DB0528A91FC93AAC00C6CFE9 /* Main.storyboard */,
+				DB0528AE1FC93AAC00C6CFE9 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		DBEDCE0F1FC96F7800A097F7 /* Model */ = {
@@ -560,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8843A01FFB2AC60084C319 /* LoginViewController.swift in Sources */,
 				DB2C08941FF5370300C4109D /* UINavigationController+Transparent.swift in Sources */,
 				DBEDCE181FC96FB500A097F7 /* MeViewController.swift in Sources */,
 				DB4406861FF732300026E321 /* AlertControllerTool.swift in Sources */,
@@ -572,6 +587,7 @@
 				DBEDCE161FC96FAC00A097F7 /* VideoCollectionsViewController.swift in Sources */,
 				DB2C08921FF5354200C4109D /* UITextField+Placeholder.swift in Sources */,
 				DB44067A1FF72B340026E321 /* SignUpViewController.swift in Sources */,
+				DB117B4E1FFB5F17002FC397 /* ResetPasswordViewController.swift in Sources */,
 				DBABDB511FC95A600035D1EF /* BaseNavigationViewController.swift in Sources */,
 				DB87E9F41FC9893100E28805 /* VideoCategoriesModel.swift in Sources */,
 				DB0528A61FC93AAC00C6CFE9 /* AppDelegate.swift in Sources */,

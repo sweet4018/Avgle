@@ -17,3 +17,19 @@
 "Email Verification" = "信箱驗證";
 
 "We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up" = "我們剛剛寄了驗證信至您的信箱，點擊驗證信中的驗證連結，完成註冊。";
+
+"Login Error" = "登入錯誤";
+
+"Both fields must mot be blank." = "請檢查輸入是否正確。";
+
+"You haven't confirmed your email address yet. We sent you a confirmation email when you sign up. Please click the verification link in that email. If you need us to send the confirmation email again, please tap Resend Email." = "您還沒有確認您的電子郵件地址。 我們在註冊時向您發送確認電子郵件。 請點擊該電子郵件中的驗證鏈接。 如果您需要我們再次發送確認電子郵件，請點擊重新發送電子郵件。";
+
+"Input Error" = "輸入錯誤";
+
+"Please provide your email address for password reset." = "請提供您的電子郵件重置密碼。";
+
+"Password Reset Follow-up" = "重置密碼";
+
+"Password Reset Error" = "密碼重置錯誤";
+
+"We have just sent you a password reset email. Please check your inbox and follow the instructions to reset your password." = "我們剛剛向您發送密碼重置信件，請檢查您的信箱並按照說明重置您的密碼。";

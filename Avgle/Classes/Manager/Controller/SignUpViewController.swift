@@ -37,9 +37,9 @@ class SignUpViewController: UIViewController {
         guard
             let name = nameTextField.text, name != "",
             let emailAddress = emailTextField.text, emailAddress != "",
-            let password = passwordTextField.text, password != "" else {
-                
-                AlertControllerTool.alertView.showAlertViewWithOK(title: "Registration Error", message: "Please make sure you provide your name, email address and password to complete the registration.", viewController: self, okAction: {})
+            let password = passwordTextField.text, password != ""
+            else {
+                AlertControllerTool.alertView.showAlertViewWithOK(title: "Registration Error", message: "Please make sure you provide your name, email address and password to complete the registration.", viewController: self, okAction: nil)
                 return
         }
         
@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController {
 
             if let error = error {
                 
-                AlertControllerTool.alertView.showAlertViewWithOK(title: "Registration", message: error.localizedDescription, viewController: self,okAction: {})
+                AlertControllerTool.alertView.showAlertViewWithOK(title: "Registration", message: error.localizedDescription, viewController: self,okAction: nil)
                 return
             }
             

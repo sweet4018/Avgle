@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -112,6 +112,9 @@
                                                 <real key="value" value="-20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="facebookLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rfp-tE-4k9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOw-Yv-svH" customClass="LineButton" customModule="Avgle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="130" width="374" height="50"/>
@@ -132,6 +135,9 @@
                                                 <real key="value" value="-20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="googleLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wjs-aT-54B"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -162,7 +168,7 @@
         <!--Log In-->
         <scene sceneID="BMe-He-T4E">
             <objects>
-                <viewController id="YWu-wH-bim" sceneMemberID="viewController">
+                <viewController id="YWu-wH-bim" customClass="LoginViewController" customModule="Avgle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="udB-3n-PDW"/>
                         <viewControllerLayoutGuide type="bottom" id="a0S-Qz-u63"/>
@@ -316,6 +322,9 @@
                                                         <real key="value" value="25"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="login:" destination="YWu-wH-bim" eventType="touchUpInside" id="DBf-QK-z6B"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -354,6 +363,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="79p-iy-zHM" id="kPq-OD-tWz"/>
+                        <outlet property="passwordTextField" destination="Ehf-Ak-NgH" id="cz5-QM-xhh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ds-MB-Wot" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="f7A-NY-bz3" userLabel="Exit" sceneMemberID="exit"/>
@@ -550,10 +563,10 @@
             </objects>
             <point key="canvasLocation" x="1188" y="457"/>
         </scene>
-        <!--View Controller-->
+        <!--Reset Password View Controller-->
         <scene sceneID="4Ln-qQ-rIx">
             <objects>
-                <viewController id="CCW-Qr-5Pn" sceneMemberID="viewController">
+                <viewController id="CCW-Qr-5Pn" customClass="ResetPasswordViewController" customModule="Avgle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DbV-30-EUY"/>
                         <viewControllerLayoutGuide type="bottom" id="MWA-zu-9cp"/>
@@ -621,6 +634,9 @@
                                                 <real key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="resetPasswordAction:" destination="CCW-Qr-5Pn" eventType="touchUpInside" id="V7t-Gp-beT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -639,6 +655,9 @@
                             <constraint firstItem="uJv-2j-feP" firstAttribute="leading" secondItem="wj0-gH-HGb" secondAttribute="leading" id="wub-ht-QG1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="GPB-Nm-6eP" id="GOZ-Ls-oo9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TfP-bb-C9X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
