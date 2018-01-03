@@ -60,7 +60,7 @@ class WelcomeViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
                 if let error = error {
                     print("登入錯誤:\(error.localizedDescription)")
                     
-                    AlertControllerTool.alertView.showAlertViewWithOK(title: "Login Error", message: error.localizedDescription, viewController: self, okAction: nil)
+                    AlertControllerTool.shared.showAlertViewWithOK(title: "Login Error", message: error.localizedDescription, viewController: self, okAction: nil)
                     return
                 }
                 //呈現主畫面
@@ -71,7 +71,10 @@ class WelcomeViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
     }
     
     @IBAction func googleLogin(_ sender: Any) {
-         GIDSignIn.sharedInstance().signIn()
+        //FIXME: Test
+        //GIDSignIn.sharedInstance().signIn()
+        
+        goMainView(self)
     }
     
     //MARK: Google Login Delegate
@@ -93,7 +96,7 @@ class WelcomeViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDel
             if let error = error {
                 print("登入失敗:\(error.localizedDescription)")
                 
-                AlertControllerTool.alertView.showAlertViewWithOK(title: "Login Error", message: error.localizedDescription, viewController: self)
+                AlertControllerTool.shared.showAlertViewWithOK(title: "Login Error", message: error.localizedDescription, viewController: self)
             }
             
             //呈現主畫面

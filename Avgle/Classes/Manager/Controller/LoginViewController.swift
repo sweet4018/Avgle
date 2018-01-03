@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
             let password = passwordTextField.text, password != ""
             else {
             
-                AlertControllerTool.alertView.showAlertViewWithOK(title: "Login Error", message: "Both fields must mot be blank.", viewController: self, okAction: nil)
+                AlertControllerTool.shared.showAlertViewWithOK(title: "Login Error", message: "Both fields must mot be blank.", viewController: self, okAction: nil)
                 return
         }
         
@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
             
             if let error = error {
                 
-                AlertControllerTool.alertView.showAlertViewWithOK(title: "Login Error", message: error.localizedDescription, viewController: self, okAction: nil)
+                AlertControllerTool.shared.showAlertViewWithOK(title: "Login Error", message: error.localizedDescription, viewController: self, okAction: nil)
                 return
             }
             
@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
                     
                     let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
                     
-                    AlertControllerTool.alertView.showAlertViewWithActionArray(title: "Login Error",
+                    AlertControllerTool.shared.showAlertViewWithActionArray(title: "Login Error",
                                                                                message: "You haven't confirmed your email address yet. We sent you a confirmation email when you sign up. Please click the verification link in that email. If you need us to send the confirmation email again, please tap Resend Email.",
                                                                                viewController: self,
                                                                                actionArray: [okAction,cancelAction])

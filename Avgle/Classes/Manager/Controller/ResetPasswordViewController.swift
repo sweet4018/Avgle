@@ -33,7 +33,7 @@ class ResetPasswordViewController: UIViewController {
         //輸入驗證
         guard let emailAddress = emailTextField.text, emailAddress != "" else {
             
-            AlertControllerTool.alertView.showAlertViewWithOK(title: "Input Error", message: "Please provide your email address for password reset.", viewController: self, okAction: nil)
+            AlertControllerTool.shared.showAlertViewWithOK(title: "Input Error", message: "Please provide your email address for password reset.", viewController: self, okAction: nil)
             return
         }
         
@@ -44,7 +44,7 @@ class ResetPasswordViewController: UIViewController {
             
             let message = (error == nil) ? "We have just sent you a password reset email. Please check your inbox and follow the instructions to reset your password." : error?.localizedDescription
             
-            AlertControllerTool.alertView.showAlertViewWithOK(title: title, message: message!, viewController: self, okAction: {
+            AlertControllerTool.shared.showAlertViewWithOK(title: title, message: message!, viewController: self, okAction: {
                 if error == nil {
                     
                     //解除鍵盤

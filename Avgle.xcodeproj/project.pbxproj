@@ -15,6 +15,8 @@
 		DB0528BB1FC93AAC00C6CFE9 /* AvgleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0528BA1FC93AAC00C6CFE9 /* AvgleTests.swift */; };
 		DB0528C61FC93AAC00C6CFE9 /* AvgleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0528C51FC93AAC00C6CFE9 /* AvgleUITests.swift */; };
 		DB0528DC1FC9411000C6CFE9 /* Commom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0528DB1FC9411000C6CFE9 /* Commom.swift */; };
+		DB0D8A0C1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0D8A0A1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.swift */; };
+		DB0D8A0D1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB0D8A0B1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.xib */; };
 		DB117B4E1FFB5F17002FC397 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB117B4D1FFB5F17002FC397 /* ResetPasswordViewController.swift */; };
 		DB118FA21FF3DF840035D9C4 /* LineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB118FA11FF3DF840035D9C4 /* LineButton.swift */; };
 		DB2C08901FF52E2300C4109D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */; };
@@ -34,6 +36,7 @@
 		DBEDCE161FC96FAC00A097F7 /* VideoCollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDCE151FC96FAC00A097F7 /* VideoCollectionsViewController.swift */; };
 		DBEDCE181FC96FB500A097F7 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDCE171FC96FB500A097F7 /* MeViewController.swift */; };
 		DBEDCE261FC985E200A097F7 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDCE251FC985E200A097F7 /* NetworkTool.swift */; };
+		DBFEF2B71FFCD30900F01A25 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFEF2B61FFCD30900F01A25 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,8 @@
 		DB0528C51FC93AAC00C6CFE9 /* AvgleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgleUITests.swift; sourceTree = "<group>"; };
 		DB0528C71FC93AAC00C6CFE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB0528DB1FC9411000C6CFE9 /* Commom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commom.swift; sourceTree = "<group>"; };
+		DB0D8A0A1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		DB0D8A0B1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoCategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
 		DB117B4D1FFB5F17002FC397 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		DB118FA11FF3DF840035D9C4 /* LineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineButton.swift; sourceTree = "<group>"; };
 		DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +99,7 @@
 		DBEDCE211FC971D200A097F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBEDCE221FC971D200A097F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBEDCE251FC985E200A097F7 /* NetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
+		DBFEF2B61FFCD30900F01A25 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +231,10 @@
 		DB0528D61FC9401500C6CFE9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DB118FA01FF3DF690035D9C4 /* View */,
+				DB118FA11FF3DF840035D9C4 /* LineButton.swift */,
+				DB2C08911FF5354200C4109D /* UITextField+Placeholder.swift */,
+				DB2C08931FF5370300C4109D /* UINavigationController+Transparent.swift */,
+				DBFEF2B61FFCD30900F01A25 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -249,16 +258,6 @@
 				DB6283CE1FC96A8400514164 /* Me */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		DB118FA01FF3DF690035D9C4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DB118FA11FF3DF840035D9C4 /* LineButton.swift */,
-				DB2C08911FF5354200C4109D /* UITextField+Placeholder.swift */,
-				DB2C08931FF5370300C4109D /* UINavigationController+Transparent.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		DB2C088D1FF5284C00C4109D /* Manager */ = {
@@ -321,6 +320,8 @@
 		DB6283D01FC96AC000514164 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DB0D8A0A1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.swift */,
+				DB0D8A0B1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -497,6 +498,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB0D8A0D1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.xib in Resources */,
 				DB0528B01FC93AAC00C6CFE9 /* LaunchScreen.storyboard in Resources */,
 				DB4406811FF72DB30026E321 /* Localizable.strings in Resources */,
 				DB4406871FF742840026E321 /* GoogleService-Info.plist in Resources */,
@@ -584,10 +586,12 @@
 				DB794A251FD2467C004E3C43 /* VideoCollectionModel.swift in Sources */,
 				DB0528DC1FC9411000C6CFE9 /* Commom.swift in Sources */,
 				DB118FA21FF3DF840035D9C4 /* LineButton.swift in Sources */,
+				DB0D8A0C1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.swift in Sources */,
 				DBEDCE161FC96FAC00A097F7 /* VideoCollectionsViewController.swift in Sources */,
 				DB2C08921FF5354200C4109D /* UITextField+Placeholder.swift in Sources */,
 				DB44067A1FF72B340026E321 /* SignUpViewController.swift in Sources */,
 				DB117B4E1FFB5F17002FC397 /* ResetPasswordViewController.swift in Sources */,
+				DBFEF2B71FFCD30900F01A25 /* UIView+Extension.swift in Sources */,
 				DBABDB511FC95A600035D1EF /* BaseNavigationViewController.swift in Sources */,
 				DB87E9F41FC9893100E28805 /* VideoCategoriesModel.swift in Sources */,
 				DB0528A61FC93AAC00C6CFE9 /* AppDelegate.swift in Sources */,

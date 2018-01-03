@@ -15,14 +15,19 @@ class BaseNavigationViewController: UINavigationController {
 
         self.interactivePopGestureRecognizer!.delegate = nil
         
+        setupNavigationStyle()
+    }
+    
+    func setupNavigationStyle() {
+
         //設置導航列主題
         let navAppearance = UINavigationBar.appearance()
         // 設置導航titleView字體
         navAppearance.isTranslucent = false
-        navAppearance.titleTextAttributes = [NSAttributedStringKey.font : theme.NavTitleFont, NSAttributedStringKey.foregroundColor : UIColor.black]
-        navAppearance.barTintColor = UIColor.white
+        navAppearance.titleTextAttributes = [NSAttributedStringKey.font : theme.NavTitleFont, NSAttributedStringKey.foregroundColor : theme.baseFontColor]
+        navAppearance.barTintColor = theme.baseBackgroundColor
         let item = UIBarButtonItem.appearance()
-        item.setTitleTextAttributes([NSAttributedStringKey.font : theme.NavItemFont, NSAttributedStringKey.foregroundColor : UIColor.black], for: .normal)
+        item.setTitleTextAttributes([NSAttributedStringKey.font : theme.NavItemFont, NSAttributedStringKey.foregroundColor : theme.baseBackgroundColor], for: .normal)
     }
 
     lazy var backBtn : UIButton = {

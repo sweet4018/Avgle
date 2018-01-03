@@ -39,7 +39,7 @@ class SignUpViewController: UIViewController {
             let emailAddress = emailTextField.text, emailAddress != "",
             let password = passwordTextField.text, password != ""
             else {
-                AlertControllerTool.alertView.showAlertViewWithOK(title: "Registration Error", message: "Please make sure you provide your name, email address and password to complete the registration.", viewController: self, okAction: nil)
+                AlertControllerTool.shared.showAlertViewWithOK(title: "Registration Error", message: "Please make sure you provide your name, email address and password to complete the registration.", viewController: self, okAction: nil)
                 return
         }
         
@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController {
 
             if let error = error {
                 
-                AlertControllerTool.alertView.showAlertViewWithOK(title: "Registration", message: error.localizedDescription, viewController: self,okAction: nil)
+                AlertControllerTool.shared.showAlertViewWithOK(title: "Registration", message: error.localizedDescription, viewController: self,okAction: nil)
                 return
             }
             
@@ -69,7 +69,7 @@ class SignUpViewController: UIViewController {
             
             //傳送認證信
             user?.sendEmailVerification(completion: nil)
-            AlertControllerTool.alertView.showAlertViewWithOK(title: "Email Verification", message: "We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up", viewController: self, okAction: {
+            AlertControllerTool.shared.showAlertViewWithOK(title: "Email Verification", message: "We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up", viewController: self, okAction: {
                 self.dismiss(animated: true, completion: nil)
             })
         }

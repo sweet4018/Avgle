@@ -11,9 +11,14 @@ import SVProgressHUD
 import FDFullscreenPopGesture
 
 class BaseViewController: UIViewController {
+    
+    //MARK: - ViewController Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupNavigation()
+        setUI()
         
         view.backgroundColor = theme.baseBackgroundColor
         navigationController?.fd_prefersNavigationBarHidden = true
@@ -27,6 +32,19 @@ class BaseViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: - Navigation
+    
+    func setupNavigation() {
+        
+        
+    }
 
+    
+    //MARK: - Setup UI
+    
+    func setUI() {
+        
+    }
 
 }

@@ -11,6 +11,9 @@ import UIKit
 ///TabBar高度
 let kTabBarHeight: CGFloat = (UIApplication.shared.statusBarFrame.size.height > 20.0 ? 83.0:49.0)
 
+///Navigation Height
+let kNavigationBarHeight: CGFloat = 44
+
 ///螢幕寬度
 let kScreenWidth = UIScreen.main.bounds.width
 
@@ -21,7 +24,10 @@ let kScreenHeight = UIScreen.main.bounds.height
 struct theme {
     
     ///基本背景色
-    static let baseBackgroundColor: UIColor = UIColor.white
+    static let baseBackgroundColor: UIColor = .black
+    
+    ///基本文字顏色
+    static let baseFontColor: UIColor = .white
     
     ///APP導航列barButtonItem文字大小
     static let NavItemFont: UIFont = UIFont.systemFont(ofSize: 16)

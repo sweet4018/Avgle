@@ -10,7 +10,7 @@ import UIKit
 
 class AlertControllerTool: NSObject {
 
-    static let alertView = AlertControllerTool()
+    static let shared = AlertControllerTool()
     
     ///有一個OK的AlertView
     func showAlertViewWithOK (title: String, message: String, viewController:UIViewController, okAction: (() -> Swift.Void)? = nil) {
