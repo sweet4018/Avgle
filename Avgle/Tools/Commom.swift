@@ -21,7 +21,7 @@ let kScreenWidth = UIScreen.main.bounds.width
 let kScreenHeight = UIScreen.main.bounds.height
 
 ///主題
-struct theme {
+struct Theme {
     
     ///基本背景色
     static let baseBackgroundColor: UIColor = .black

@@ -12,7 +12,9 @@ import FDFullscreenPopGesture
 
 class BaseViewController: UIViewController {
     
-    //MARK: - ViewController Life Cycle
+    // MARK: - Property
+    
+    // MARK: - ViewController Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,7 @@ class BaseViewController: UIViewController {
         setupNavigation()
         setUI()
         
-        view.backgroundColor = theme.baseBackgroundColor
+        view.backgroundColor = Theme.baseBackgroundColor
         navigationController?.fd_prefersNavigationBarHidden = true
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.custom)
         SVProgressHUD.setMinimumDismissTimeInterval(1.0)
@@ -33,7 +35,7 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     func setupNavigation() {
         
@@ -41,7 +43,7 @@ class BaseViewController: UIViewController {
     }
 
     
-    //MARK: - Setup UI
+    // MARK: - Setup UI
     
     func setUI() {
         

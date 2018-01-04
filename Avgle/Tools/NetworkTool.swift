@@ -12,6 +12,8 @@ import Alamofire
 import SwiftyJSON
 
 class NetworkTool: NSObject {
+    
+    // MARK: - Property
 
     static let share = NetworkTool()
     
@@ -19,7 +21,11 @@ class NetworkTool: NSObject {
     
     let videoCollectionsURL = "https://api.avgle.com/v1/collections/"
     
-    // MARK: - 讀取影片分類資料
+    let videoURL = "https://api.avgle.com/v1/videos/"
+    
+    // MARK: - Function
+    
+    // MARK:  讀取影片分類資料
     func loadVideoCategoriseData(finished: @escaping (_ success: Bool ,[VideoCategoriesModel]) ->()) {
         
         SVProgressHUD.show(withStatus: NSLocalizedString("Loading...", comment: ""))
@@ -50,8 +56,8 @@ class NetworkTool: NSObject {
         }
     }
     
-    //MARK: - 讀取影片collection
-    func loadVideoCollectionData(page: Int, limit: Int, finished: @escaping(_ success: Bool,_ hasMore: Bool,_ data: [VideoCollectionModel]) ->()) {
+    // MARK:  讀取影片collection
+    func loadVideoCollectionData(page: Int, limit: Int, finished: @escaping(_ success: Bool, _ hasMore: Bool, _ data: [VideoCollectionModel]) ->()) {
         
         SVProgressHUD.show(withStatus: NSLocalizedString("Loading...", comment: ""))
         
@@ -77,8 +83,44 @@ class NetworkTool: NSObject {
                         collectionModelArr.append(oneCollection)
                     }
                     SVProgressHUD.dismiss()
-                    finished(true,hasMore,collectionModelArr)
+                    finished(true, hasMore, collectionModelArr)
             }
         }
     }
+    
+    // MARK:  Load Vidoe Data
+    func loadVideoData(page: Int, limit: Int, finished: @escaping(_ success: Bool, _ hasMore: Bool, _ data: [VideoModel]) -> ()) {
+        
+        SVProgressHUD.show(withStatus: NSLocalizedString("Loading...", comment: ""))
+        
+        let url = videoURL + String(page) + "?limit=" + String(limit)
+        
+        Alamofire.request(url, method: .get).responseJSON { (response) in
+            
+            guard response.result.isSuccess else {
+                
+                SVProgressHUD.show(withStatus: NSLocalizedString("Failed to load...", comment: ""))
+                finished(false, false, [])
+                SVProgressHUD.dismiss()
+                return
+            }
+            
+            let json = JSON(response.result.value!)
+            let hasMore: Bool = json["response"]["has_more"].bool!
+            
+            if let result = json["response"]["videos"].array {
+                
+                var videosModelArr = [VideoModel]()
+                
+                for video in result {
+                    
+                    let oneVideo = VideoModel(dict: video.dictionaryObject!)
+                    videosModelArr.append(oneVideo)
+                }
+                SVProgressHUD.dismiss()
+                finished(true, hasMore, videosModelArr)
+            }
+        }
+    }
+    
 }

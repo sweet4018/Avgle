@@ -51,7 +51,6 @@ PODS:
   - GTMSessionFetcher/Core (1.1.12)
   - GTMSessionFetcher/Full (1.1.12):
     - GTMSessionFetcher/Core (= 1.1.12)
-  - Kingfisher (4.2.0)
   - MJRefresh (3.1.14.1)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -74,7 +73,6 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - GoogleSignIn
-  - Kingfisher
   - MJRefresh
   - SDWebImage
   - SnapKit
@@ -96,7 +94,6 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
-  Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
   MJRefresh: 238e6a37e2dba12160ee3b79f6d2a2b26abcab42
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
@@ -104,6 +101,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: b43effa7606c62cc7e09d7fbc19895f215b337aa
+PODFILE CHECKSUM: 46162171437dd41313d99f9b6f8a99b067f8f8e4
 
 COCOAPODS: 1.2.0

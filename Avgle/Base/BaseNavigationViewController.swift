@@ -24,10 +24,10 @@ class BaseNavigationViewController: UINavigationController {
         let navAppearance = UINavigationBar.appearance()
         // 設置導航titleView字體
         navAppearance.isTranslucent = false
-        navAppearance.titleTextAttributes = [NSAttributedStringKey.font : theme.NavTitleFont, NSAttributedStringKey.foregroundColor : theme.baseFontColor]
-        navAppearance.barTintColor = theme.baseBackgroundColor
+        navAppearance.titleTextAttributes = [NSAttributedStringKey.font : Theme.NavTitleFont, NSAttributedStringKey.foregroundColor : Theme.baseFontColor]
+        navAppearance.barTintColor = Theme.baseBackgroundColor
         let item = UIBarButtonItem.appearance()
-        item.setTitleTextAttributes([NSAttributedStringKey.font : theme.NavItemFont, NSAttributedStringKey.foregroundColor : theme.baseBackgroundColor], for: .normal)
+        item.setTitleTextAttributes([NSAttributedStringKey.font : Theme.NavItemFont, NSAttributedStringKey.foregroundColor : Theme.baseBackgroundColor], for: .normal)
     }
 
     lazy var backBtn : UIButton = {

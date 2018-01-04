@@ -11,17 +11,28 @@ import MJRefresh
 import SafariServices
 
 class VideoCategoriesViewController: BaseViewController {
-
-    let collectionViewReuseIdentifier: String = "collectionViewCell"
     
     //MARK: - Property
+    
+    struct PropertyKeys {
+        
+        static let collectionViewReuseIdentifier: String = "videoCategoriesCollectionViewCell"
+    }
     
     fileprivate lazy var videos: [VideoCategoriesModel] = {
         let video: Array = [VideoCategoriesModel]()
         return video
     }()
     
-    fileprivate weak var mainCollectionView: UICollectionView?
+    fileprivate lazy var mainCollectionView: UICollectionView = {
+        
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kTabBarHeight - kNavigationBarHeight), collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: VideoCategoriesCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: PropertyKeys.collectionViewReuseIdentifier)
+        collectionView.backgroundColor = Theme.baseBackgroundColor
+        return collectionView
+    }()
     
     //MARK: - ViewController Life Cycle
     
@@ -55,21 +66,13 @@ class VideoCategoriesViewController: BaseViewController {
     
     //MARK: UICollection
     fileprivate func setCollectionView() {
-
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kTabBarHeight - kNavigationBarHeight), collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "VideoCategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: collectionViewReuseIdentifier)
-        collectionView.backgroundColor = theme.baseBackgroundColor
         
-        self.view.addSubview(collectionView)
+        self.view.addSubview(mainCollectionView)
         
-        self.mainCollectionView = collectionView
-    
         //刷新
         let header = MJRefreshStateHeader(refreshingTarget: self, refreshingAction: #selector(pullLoadCollectionView))
         header?.lastUpdatedTimeLabel.isHidden = false
-        self.mainCollectionView?.mj_header = header
+        self.mainCollectionView.mj_header = header
     }
     
     ///下拉刷新
@@ -82,15 +85,14 @@ class VideoCategoriesViewController: BaseViewController {
     
     fileprivate func loadData() {
         
-        self.mainCollectionView?.mj_header.beginRefreshing()
+        self.mainCollectionView.mj_header.beginRefreshing()
         NetworkTool.share.loadVideoCategoriseData {[weak self] (success, videoCategories) in
 
             self!.videos = videoCategories
-            self!.mainCollectionView?.reloadData()
-            self!.mainCollectionView?.mj_header.endRefreshing()
+            self!.mainCollectionView.reloadData()
+            self!.mainCollectionView.mj_header.endRefreshing()
         }
     }
-
 }
 
 extension VideoCategoriesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -101,14 +103,15 @@ extension VideoCategoriesViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewReuseIdentifier, for: indexPath) as! VideoCategoriesCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyKeys.collectionViewReuseIdentifier, for: indexPath) as! VideoCategoriesCollectionViewCell
         cell.videoCategories = videos[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let safariVC = SFSafariViewController(url: URL(string: videos[indexPath.item].category_url!)!)
+        let urlStr: String = videos[indexPath.item].category_url!.urlEncoded()
+        let safariVC = SFSafariViewController(url: URL(string: urlStr)!)
         safariVC.delegate = self
         self.present(safariVC, animated: true, completion: nil)
     }
