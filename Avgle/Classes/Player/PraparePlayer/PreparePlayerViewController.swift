@@ -8,6 +8,7 @@
 
 import UIKit
 import BMPlayer
+import SafariServices
 
 class PreparePlayerViewController: BaseViewController {
 
@@ -27,16 +28,8 @@ class PreparePlayerViewController: BaseViewController {
        
         let player = BMPlayer(customControlView: BMPlayerCustomControlView())
         player.delegate = self
-        player.backBlock = { [unowned self] (isFullScreen) in
-            if isFullScreen {
-                return
-            } else {
-                let _ = self.navigationController?.popViewController(animated: true)
-            }
-        }
         return player
     }()
-    
     
     fileprivate lazy var blurEffectView: UIVisualEffectView = {
         
@@ -73,7 +66,7 @@ class PreparePlayerViewController: BaseViewController {
         btn.layer.borderColor = UIColor.white.cgColor
         btn.setTitle("Watch the video", for: .normal)
         btn.setTitleColor(.white, for: .normal)
-        btn.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(watchFullVideo), for: .touchUpInside)
         
         return btn
     }()
@@ -88,6 +81,7 @@ class PreparePlayerViewController: BaseViewController {
         let translate = CGAffineTransform(translationX: 0, y: 500)
         self.watchTheVideoBtn.transform = scale.concatenating(translate)
         self.cancelBtn.transform = scale.concatenating(translate)
+        self.player.transform = scale.concatenating(translate)
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,10 +97,10 @@ class PreparePlayerViewController: BaseViewController {
             
             self.watchTheVideoBtn.transform = CGAffineTransform.identity
             self.cancelBtn.transform = CGAffineTransform.identity
+            self.player.transform = CGAffineTransform.identity
         }, completion: nil)
     
     }
-    
     
     // MARK : - Setup UI
     
@@ -130,12 +124,20 @@ class PreparePlayerViewController: BaseViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @objc func watchFullVideo() {
+        
+        let urlStr: String = self.video!.embedded_url!.urlEncoded()
+        let safariVC = SFSafariViewController(url: URL(string: urlStr)!)
+        safariVC.delegate = self
+        self.present(safariVC, animated: true, completion: nil)
+    }
+    
     
     // MARK: - Player
     
     func resetPlayerManager() {
     
-        BMPlayerConf.shouldAutoPlay = false
+        BMPlayerConf.shouldAutoPlay = true
         BMPlayerConf.tintColor = UIColor.white
         BMPlayerConf.topBarShowInCase = .none
     }
@@ -163,6 +165,12 @@ class PreparePlayerViewController: BaseViewController {
             make.right.equalTo(view.snp.right)
             make.height.equalTo(view.snp.width).multipliedBy(9.0/16.0).priority(500)
         }
+    }
+    
+    // MARK: Device Orientation
+    
+    override var shouldAutorotate: Bool {
+        return true
     }
 }
 
@@ -201,6 +209,11 @@ extension PreparePlayerViewController: BMPlayerDelegate {
     func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
         //        print("| BMPlayerDelegate | loadedTimeDidChange | \(loadedDuration) of \(totalDuration)")
     }
+}
+
+extension PreparePlayerViewController: SFSafariViewControllerDelegate {
     
-    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

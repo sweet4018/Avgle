@@ -50,10 +50,22 @@
 
 "Recommended Video" = "推薦影片";
 
-"Display More" = "顯示更多";
+"See All" = "顯示更多";
 
 "Like:" = "喜歡:";
 
 "Cancel" = "取消";
 
 "Watch the video" = "觀賞影片";
+
+"Playing" = "播放中";
+
+"Paused" = "暫停";
+
+"Page" = "頁";
+
+"Pages" = "頁數";
+
+"Please Select one/a  Page" = "請選擇頁數";
+
+"Range" = "範圍";

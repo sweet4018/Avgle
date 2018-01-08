@@ -1,70 +1,82 @@
 //
 //  BMPlayerCustomControlView.swift
-//  BMPlayer
+//  Avgle
 //
-//  Created by BrikerMan on 2017/4/4.
-//  Copyright © 2017年 CocoaPods. All rights reserved.
+//  Created by ChenZheng-Yang on 2018/1/7.
+//  Copyright © 2018年 ChenCheng-Yang. All rights reserved.
 //
 
-import UIKit
+
+import Foundation
 import BMPlayer
 
 class BMPlayerCustomControlView: BMPlayerControlView {
     
-    var playbackRateButton = UIButton(type: .custom)
-    var playRate: Float = 1.0
-    
-    var rotateButton = UIButton(type: .custom)
-    var rotateCount: CGFloat = 0
+    var playTimeUIProgressView = UIProgressView()
+    var playingStateLabel = UILabel()
     
     /**
      Override if need to customize UI components
      */
     override func customizeUIComponents() {
-        mainMaskView.backgroundColor   = UIColor.clear
-        topMaskView.backgroundColor    = UIColor.black.withAlphaComponent(0.4)
-        bottomMaskView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        timeSlider.setThumbImage(UIImage(named: "custom_slider_thumb"), for: .normal)
+        // just make the view hidden
+        backButton.isHidden = true
+        chooseDefitionView.isHidden = true
         
-        topMaskView.addSubview(playbackRateButton)
+        // or remove from superview
+        playButton.removeFromSuperview()
+        currentTimeLabel.removeFromSuperview()
+        totalTimeLabel.removeFromSuperview()
+        timeSlider.removeFromSuperview()
         
-        playbackRateButton.layer.cornerRadius = 2
-        playbackRateButton.layer.borderWidth  = 1
-        playbackRateButton.layer.borderColor  = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8 ).cgColor
-        playbackRateButton.setTitleColor(UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 0.9 ), for: .normal)
-        playbackRateButton.setTitle("  rate \(playRate)  ", for: .normal)
-        playbackRateButton.addTarget(self, action: #selector(onPlaybackRateButtonPressed), for: .touchUpInside)
-        playbackRateButton.titleLabel?.font   = UIFont.systemFont(ofSize: 12)
-        playbackRateButton.isHidden = true
-        playbackRateButton.snp.makeConstraints {
-            $0.right.equalTo(chooseDefitionView.snp.left).offset(-5)
-            $0.centerY.equalTo(chooseDefitionView)
+        // If needs to change position remake the constraint
+        progressView.snp.remakeConstraints { (make) in
+            make.bottom.left.right.equalTo(bottomMaskView)
+            make.height.equalTo(2)
         }
         
-        topMaskView.addSubview(rotateButton)
-        rotateButton.layer.cornerRadius = 2
-        rotateButton.layer.borderWidth  = 1
-        rotateButton.layer.borderColor  = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8 ).cgColor
-        rotateButton.setTitleColor(UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 0.9 ), for: .normal)
-        rotateButton.setTitle("  rotate  ", for: .normal)
-        rotateButton.addTarget(self, action: #selector(onRotateButtonPressed), for: .touchUpInside)
-        rotateButton.titleLabel?.font   = UIFont.systemFont(ofSize: 12)
-        rotateButton.isHidden = true
-        rotateButton.snp.makeConstraints {
-            $0.right.equalTo(playbackRateButton.snp.left).offset(-5)
-            $0.centerY.equalTo(chooseDefitionView)
+        // Add new items and constraint
+        bottomMaskView.addSubview(playTimeUIProgressView)
+        playTimeUIProgressView.snp.makeConstraints { (make) in
+            make.bottom.left.right.equalTo(bottomMaskView)
+            make.height.equalTo(2)
+        }
+        
+        playTimeUIProgressView.tintColor      = UIColor.red
+        playTimeUIProgressView.trackTintColor = UIColor.clear
+
+        addSubview(playingStateLabel)
+        playingStateLabel.snp.makeConstraints {
+            $0.left.equalTo(self).offset(10)
+            $0.bottom.equalTo(self).offset(-10)
+        }
+        playingStateLabel.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        playingStateLabel.textColor = UIColor.white
+        
+        addSubview(fullscreenButton)
+        fullscreenButton.snp.makeConstraints {
+            $0.margins.equalTo(self.backButton)
         }
     }
     
-    
-    
     override func updateUI(_ isForFullScreen: Bool) {
-        super.updateUI(isForFullScreen)
-        playbackRateButton.isHidden = !isForFullScreen
-        rotateButton.isHidden = !isForFullScreen
-        if let layer = player?.playerLayer {
-            layer.frame = player!.bounds
-        }
+        backButton.isHidden = true
+        chooseDefitionView.isHidden = true
+    }
+    
+    override func playTimeDidChange(currentTime: TimeInterval, totalTime: TimeInterval) {
+        playTimeUIProgressView.setProgress(Float(currentTime/totalTime), animated: true)
+    }
+
+    override func onTapGestureTapped(_ gesture: UITapGestureRecognizer) {
+        // redirect tap action to play button action
+        delegate?.controlView(controlView: self, didPressButton: playButton)
+    }
+    
+    override func playStateDidChange(isPlaying: Bool) {
+        super.playStateDidChange(isPlaying: isPlaying)
+        
+        playingStateLabel.text = isPlaying ? NSLocalizedString("Playing", comment: "") : NSLocalizedString("Paused", comment: "")
     }
     
     override func controlViewAnimation(isShow: Bool) {
@@ -78,42 +90,11 @@ class BMPlayerCustomControlView: BMPlayerControlView {
                 $0.height.equalTo(65)
             }
             
-            self.bottomMaskView.snp.remakeConstraints {
-                $0.bottom.equalTo(self.mainMaskView).offset(isShow ? 0 : 50)
-                $0.left.right.equalTo(self.mainMaskView)
-                $0.height.equalTo(50)
-            }
             self.layoutIfNeeded()
         }) { (_) in
             self.autoFadeOutControlViewWithAnimation()
         }
     }
     
-    @objc func onPlaybackRateButtonPressed() {
-        autoFadeOutControlViewWithAnimation()
-        switch playRate {
-        case 1.0:
-            playRate = 1.5
-        case 1.5:
-            playRate = 0.5
-        case 0.5:
-            playRate = 1.0
-        default:
-            playRate = 1.0
-        }
-        playbackRateButton.setTitle("  rate \(playRate)  ", for: .normal)
-        delegate?.controlView?(controlView: self, didChangeVideoPlaybackRate: playRate)
-    }
     
-    
-    
-    @objc func onRotateButtonPressed() {
-        guard let layer = player?.playerLayer else {
-            return
-        }
-        print("rotated")
-        rotateCount += 1
-        layer.transform = CGAffineTransform(rotationAngle: rotateCount * CGFloat(Double.pi/2))
-        layer.frame = player!.bounds
-    }
 }

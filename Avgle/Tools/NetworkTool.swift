@@ -89,7 +89,7 @@ class NetworkTool: NSObject {
     }
     
     // MARK:  Load Vidoe Data
-    func loadVideoData(page: Int, limit: Int, finished: @escaping(_ success: Bool, _ hasMore: Bool, _ data: [VideoModel]) -> ()) {
+    func loadVideoData(page: Int, limit: Int, finished: @escaping(_ success: Bool, _ hasMore: Bool, _ totalVideo: Int , _ data: [VideoModel]) -> ()) {
         
         SVProgressHUD.show(withStatus: NSLocalizedString("Loading...", comment: ""))
         
@@ -100,14 +100,14 @@ class NetworkTool: NSObject {
             guard response.result.isSuccess else {
                 
                 SVProgressHUD.show(withStatus: NSLocalizedString("Failed to load...", comment: ""))
-                finished(false, false, [])
+                finished(false, false, 0, [])
                 SVProgressHUD.dismiss()
                 return
             }
             
             let json = JSON(response.result.value!)
             let hasMore: Bool = json["response"]["has_more"].bool!
-            
+            let totalVideo: Int = json["response"]["total_videos"].int!
             if let result = json["response"]["videos"].array {
                 
                 var videosModelArr = [VideoModel]()
@@ -118,7 +118,7 @@ class NetworkTool: NSObject {
                     videosModelArr.append(oneVideo)
                 }
                 SVProgressHUD.dismiss()
-                finished(true, hasMore, videosModelArr)
+                finished(true, hasMore, totalVideo, videosModelArr)
             }
         }
     }

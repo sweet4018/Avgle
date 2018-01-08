@@ -34,7 +34,7 @@ class RecommendedVideosView: UIView {
     fileprivate lazy var moreBtn: UIButton = {
         
         let button = UIButton(type: .custom)
-        button.setTitle(NSLocalizedString("Display More", comment: ""), for: .normal)
+        button.setTitle(NSLocalizedString("See All", comment: ""), for: .normal)
         button.setTitleColor(UIColor.lightGray, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.titleLabel?.sizeToFit()

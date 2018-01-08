@@ -14,6 +14,11 @@ class VideosViewController: BaseViewController {
     
     //MARK: - Property
     
+    //當前頁數
+    var currentPage: Int! = 0
+    
+    //總頁數
+    var totalPage: Int! = 1
     
     struct PropertyKeys {
         
@@ -35,13 +40,47 @@ class VideosViewController: BaseViewController {
         return collectionView
     }()
     
+    fileprivate lazy var selectPageAlertController: UIAlertController = {
+       
+        let alertController = UIAlertController(title: NSLocalizedString("Please Select one/a  Page", comment: ""),
+                                                          message: NSLocalizedString("Range", comment: "") + " 1~" + String(totalPage),
+                                                          preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            
+            let enterMessageTextField = alertController.textFields![0]
+            
+            guard
+                let text = enterMessageTextField.text,
+                text != "", text != "0" else {
+            
+                return
+            }
+            
+            self.currentPage = Int(text)! - 1
+            self.loadDataWtihDropDown()
+            self.updateNavLeftBtnTitle(page: self.currentPage + 1)
+        })
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+        
+        alertController.addTextField(configurationHandler: { (textField: UITextField) in
+            textField.placeholder = NSLocalizedString("Pages", comment: "")
+            textField.keyboardType = .numberPad
+        })
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        return alertController
+    }()
+
     //MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //讀取資料
-        loadData()
+        loadDataWtihDropDown()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +94,33 @@ class VideosViewController: BaseViewController {
         super.setupNavigation()
 
         self.title = NSLocalizedString("Videos", comment: "")
+        setupNavBtn()
+    }
+    
+    fileprivate func setupNavBtn() {
+        
+        let barButtonItem =  UIBarButtonItem(title: getNavleftBtnName(page: 1), style: .plain, target: self, action: #selector(clickNavigationLeftBtn))
+        barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: Theme.baseFontColor], for: .normal)
+        self.navigationItem.leftBarButtonItem = barButtonItem
+    }
+
+    ///獲得Navigation 左方按鈕標題（因中文跟英文順序顛倒，英文:Page 1，中文:1頁）
+    fileprivate func getNavleftBtnName(page: Int) -> String {
+        
+        let name: String
+        let pre = Locale.preferredLanguages[0]
+        
+        if pre == "en" {
+            name = NSLocalizedString("Page", comment: "") + String(page)
+        } else {
+            name = String(page) + NSLocalizedString("Page", comment: "")
+        }
+        return name
+    }
+    
+    fileprivate func updateNavLeftBtnTitle(page: Int) {
+        
+        self.navigationItem.leftBarButtonItem?.title = getNavleftBtnName(page: page)
     }
     
     //MARK: - UI
@@ -71,36 +137,59 @@ class VideosViewController: BaseViewController {
         self.view.addSubview(mainCollectionView)
         
         //刷新
-        let header = MJRefreshStateHeader(refreshingTarget: self, refreshingAction: #selector(pullLoadCollectionView))
+        let header = MJRefreshStateHeader(refreshingTarget: self, refreshingAction: #selector(dropDownLoad))
         header?.lastUpdatedTimeLabel.isHidden = false
         self.mainCollectionView.mj_header = header
+
+        let footer = MJRefreshBackFooter(refreshingTarget: self, refreshingAction: #selector(pullUpLoad))
+        self.mainCollectionView.mj_footer = footer
     }
     
     ///下拉刷新
-    @objc fileprivate func pullLoadCollectionView() {
-        //讀取資料
-        loadData()
+    @objc fileprivate func dropDownLoad() {
+        
+        loadDataWtihDropDown()
+    }
+    
+    ///上拉刷新
+    @objc fileprivate func pullUpLoad() {
+        
+        loadDataWtihPullUp()
     }
     
     //MARK: - Load Data
     
-    fileprivate func loadData() {
+    fileprivate func loadDataWtihDropDown() {
         
         self.mainCollectionView.mj_header.beginRefreshing()
-        
-        NetworkTool.share.loadVideoData(page: 0, limit: 10) { [weak self] (success, hasMore, data) in
+        NetworkTool.share.loadVideoData(page: currentPage, limit: 26) { [weak self] (success, hasMore, totalVideo, data) in
             
+            self?.totalPage = totalVideo / 50 //因一頁影片是50，所以拿總數來除50得到總頁數
+            self!.videos.removeAll()
             self!.videos = data
             self!.mainCollectionView.reloadData()
             self!.mainCollectionView.mj_header.endRefreshing()
+            self!.mainCollectionView.mj_footer.resetNoMoreData()
         }
+    }
+    
+    fileprivate func loadDataWtihPullUp() {
         
-//        NetworkTool.share.loadVideoCategoriseData {[weak self] (success, data) in
-//
-//            self!.videos = data
-//            self!.mainCollectionView.reloadData()
-//            self!.mainCollectionView.mj_header.endRefreshing()
-//        }
+        self.mainCollectionView.mj_footer.beginRefreshing()
+        NetworkTool.share.loadVideoData(page: currentPage, limit: 50) { [weak self] (success, hasMore, totalVideo, data) in
+            
+            self?.totalPage = totalVideo / 50 //因一頁影片是50，所以拿總數來除50得到總頁數
+            self!.videos = data
+            self!.mainCollectionView.reloadData()
+            self!.mainCollectionView.mj_footer.endRefreshing()
+            self!.mainCollectionView.mj_footer.endRefreshingWithNoMoreData()
+        }
+    }
+    
+    // MARK: - Button Action
+    
+    @objc func clickNavigationLeftBtn() {
+        present(selectPageAlertController, animated: true, completion: nil)
     }
 }
 
@@ -118,14 +207,9 @@ extension VideosViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-//        let urlStr: String = videos[indexPath.item].video_url!.urlEncoded()
-//        let safariVC = SFSafariViewController(url: URL(string: urlStr)!)
-//        safariVC.delegate = self
-//        self.present(safariVC, animated: true, completion: nil)
+
         let preparePlayerVC = PreparePlayerViewController()
         preparePlayerVC.video = videos[indexPath.item]
-//        self.navigationController?.pushViewController(preparePlayerVC, animated: true)
         self.present(preparePlayerVC, animated: true, completion: nil)
     }
     
