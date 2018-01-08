@@ -22,4 +22,7 @@ pod 'FBSDKLoginKit'
   # Pods for Google
 pod 'GoogleSignIn'
 
+  # Video
+pod 'BMPlayer', '~> 1.0.0'
+
 end

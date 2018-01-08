@@ -60,5 +60,4 @@ class BaseNavigationViewController: UINavigationController {
     @objc func backBtnClick() {
         self.popViewController(animated: true)
     }
-
 }

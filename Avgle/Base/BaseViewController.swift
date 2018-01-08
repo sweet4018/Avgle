@@ -47,6 +47,21 @@ class BaseViewController: UIViewController {
     
     func setUI() {
         
+        UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
     }
-
+    
+    // MARK: Device Orientation
+    
+//    /** 限制直向 */
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+//
+//    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+//        return  .portrait
+//    }
+//
+    override var shouldAutorotate: Bool {
+        return false
+    }
 }

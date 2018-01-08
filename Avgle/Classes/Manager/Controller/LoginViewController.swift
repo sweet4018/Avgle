@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
     //MARK: - Property
     @IBOutlet weak var emailTextField: UITextField!

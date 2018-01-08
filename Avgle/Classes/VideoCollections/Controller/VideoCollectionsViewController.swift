@@ -13,23 +13,45 @@ class VideoCollectionsViewController: BaseViewController {
 
     // MARK: - Property
     
+    struct PropertyKeys {
+        
+        static let collectionViewReuseIdentifier: String = "videoCollectionViewCell"
+    }
+    
     fileprivate lazy var mainScrollView: UIScrollView = {
+        
         let scrollView = UIScrollView(frame: view.bounds)
         return scrollView
     }()
     
     fileprivate lazy var recommendVideosView: RecommendedVideosView = {
     
-        let view = RecommendedVideosView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 180))
+        let view = RecommendedVideosView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenWidth * 0.5))
         view.recommendCollectionView.delegate = self
         view.recommendCollectionView.dataSource = self
         view.delegate = self
         return view
     }()
     
+    fileprivate lazy var videosCategoriesView: VideosCategoriesView = {
+        
+        let view = VideosCategoriesView(frame: CGRect(x: 0, y: recommendVideosView.frame.maxY, width: kScreenWidth, height: kScreenWidth * 0.75))
+        view.mainCollectionView.delegate = self
+        view.mainCollectionView.dataSource = self
+        return view
+    }()
+    
     fileprivate lazy var recommendVideos: [VideoCollectionModel] = {
+        
         let videos: Array = [VideoCollectionModel]()
         return videos
+    }()
+    
+    
+    fileprivate lazy var categoriesVideos: [VideoCategoriesModel] = {
+        
+        let video: Array = [VideoCategoriesModel]()
+        return video
     }()
     
     // MARK: - ViewController Life Cycle
@@ -55,10 +77,9 @@ class VideoCollectionsViewController: BaseViewController {
         
         self.view.addSubview(mainScrollView)
         self.mainScrollView.addSubview(recommendVideosView)
+        self.mainScrollView.addSubview(videosCategoriesView)
         
-        
-//        self.mainScrollView.contentSize
-        
+        self.mainScrollView.contentSize = CGSize(width: kScreenWidth, height: videosCategoriesView.frame.maxY)
     }
     
     // MARL: - Load Data
@@ -71,13 +92,11 @@ class VideoCollectionsViewController: BaseViewController {
             self!.recommendVideosView.recommendCollectionView.reloadData()
         }
         
-        NetworkTool.share.loadVideoData(page: 0, limit: 12) { [weak self](success, hasMore, data) in
-            
-            
-            
+        NetworkTool.share.loadVideoCategoriseData {[weak self] (success, data) in
+            self!.categoriesVideos = data
+            self!.videosCategoriesView.mainCollectionView.reloadData()
         }
     }
-   
 }
 
 extension VideoCollectionsViewController: RecommendedVideosViewDelegate {
@@ -86,26 +105,48 @@ extension VideoCollectionsViewController: RecommendedVideosViewDelegate {
         
     }
 }
-
 extension VideoCollectionsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recommendVideos.count
+        
+        if collectionView == self.recommendVideosView.recommendCollectionView {
+            return recommendVideos.count
+        } else {
+            return categoriesVideos.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCategoriesViewController.PropertyKeys.collectionViewReuseIdentifier, for: indexPath) as! VideoCategoriesCollectionViewCell
-        cell.videoCollection = recommendVideos[indexPath.item]
-        return cell
+        if collectionView == self.recommendVideosView.recommendCollectionView {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyKeys.collectionViewReuseIdentifier, for: indexPath) as! VideoCategoriesCollectionViewCell
+            cell.videoCollection = recommendVideos[indexPath.item]
+            
+            return cell
+            
+        } else {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyKeys.collectionViewReuseIdentifier, for: indexPath) as! VideoCategoriesCollectionViewCell
+            cell.videoCategories = categoriesVideos[indexPath.item]
+            
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let urlStr: String = recommendVideos[indexPath.item].collection_url!.urlEncoded()
+        let urlStr: String
+
+        if collectionView == self.recommendVideosView.recommendCollectionView {
+            urlStr = recommendVideos[indexPath.item].collection_url!.urlEncoded()
+        } else {
+            urlStr = categoriesVideos[indexPath.item].category_url!.urlEncoded()
+        }
+
         let safariVC = SFSafariViewController(url: URL(string: urlStr)!)
         safariVC.delegate = self
-        self.present(safariVC, animated: true, completion: nil)
+        self.present(safariVC, animated: true, completion: nil)                
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

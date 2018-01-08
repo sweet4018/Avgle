@@ -14,14 +14,15 @@ class BaseTabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         setupAllChildViewController()
-        self.setValue(BaseTabBar(), forKey: "tabBar")        
+        self.setValue(BaseTabBar(), forKey: "tabBar")
+        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
     }
     
     fileprivate func setupAllChildViewController() {
         
-        tabBarAddChildViewController(vc: VideoCategoriesViewController(), title: "Video Categories", imageName: "tabBar_VideoCollections_0", selectedImageName: "tabBar_VideoCategories_1")
+        tabBarAddChildViewController(vc: VideosViewController(), title: "Videos", imageName: "tabBar_VideoCategories_0", selectedImageName: "tabBar_VideoCategories_0")
         
-        tabBarAddChildViewController(vc: VideoCollectionsViewController(), title: "Videos", imageName: "tabBar_VideoCategories_0", selectedImageName: "tabBar_VideoCollections_1")
+        tabBarAddChildViewController(vc: VideoCollectionsViewController(), title: "Video Collection", imageName: "tabBar_VideoCollections_0", selectedImageName: "tabBar_VideoCollections_0")
         
         tabBarAddChildViewController(vc: MeViewController(), title: "Me", imageName: "tabBar_Me_0", selectedImageName: "tabBar_Me_1")
         
@@ -32,6 +33,19 @@ class BaseTabBarViewController: UITabBarController {
         vc.tabBarItem = UITabBarItem(title: NSLocalizedString(title, comment: ""), image: UIImage(named: imageName), selectedImage: UIImage(named: selectedImageName))
         let navVC = BaseNavigationViewController(rootViewController: vc)
         addChildViewController(navVC)
+    }
+    
+    /** 限制直向 */
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return  .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
     }
 }
 

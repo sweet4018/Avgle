@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ResetPasswordViewController: UIViewController {
+class ResetPasswordViewController: BaseViewController {
 
     //MARK: - Property
     @IBOutlet weak var emailTextField: UITextField!

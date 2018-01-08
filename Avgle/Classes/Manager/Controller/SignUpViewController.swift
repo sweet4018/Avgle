@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: BaseViewController {
 
     // MARK: - Property
     @IBOutlet weak var nameTextField: UITextField!

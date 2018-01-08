@@ -48,15 +48,16 @@ class RecommendedVideosView: UIView {
         layout.scrollDirection = .horizontal
     
         let collectionView = UICollectionView(frame: self.frame, collectionViewLayout: layout)
-        collectionView.register(UINib(nibName: VideoCategoriesCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: VideoCategoriesViewController.PropertyKeys.collectionViewReuseIdentifier)
+        collectionView.register(UINib(nibName: VideoCategoriesCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: VideoCollectionsViewController.PropertyKeys.collectionViewReuseIdentifier)
         collectionView.backgroundColor = Theme.baseBackgroundColor
         collectionView.isPagingEnabled = true
         return collectionView
     }()
     
     fileprivate lazy var lineView: UIView = {
+        
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .gray
         return view
     }()
     

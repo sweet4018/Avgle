@@ -39,6 +39,8 @@ struct Theme {
     static let appShare = UIApplication.shared
 }
 
+///比例
+let proportion = kScreenHeight/667
 
 /// RGBA的顏色設置
 func CYColor(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {

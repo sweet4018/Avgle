@@ -36,6 +36,8 @@
 
 "Video Categories" = "影片分類";
 
+"Video Collection" = "影片收藏";
+
 "Videos" = "影片";
 
 "Me" = "我的";
@@ -49,3 +51,9 @@
 "Recommended Video" = "推薦影片";
 
 "Display More" = "顯示更多";
+
+"Like:" = "喜歡:";
+
+"Cancel" = "取消";
+
+"Watch the video" = "觀賞影片";

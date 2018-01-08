@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
 
-class WelcomeViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
+class WelcomeViewController: BaseViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
     // MARK: - ViewController Life Cycle
     

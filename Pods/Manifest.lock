@@ -1,5 +1,12 @@
 PODS:
   - Alamofire (4.5.1)
+  - BMPlayer (1.0.1):
+    - BMPlayer/Full (= 1.0.1)
+  - BMPlayer/Core (1.0.1)
+  - BMPlayer/Full (1.0.1):
+    - BMPlayer/Core
+    - NVActivityIndicatorView (~> 4.0.0)
+    - SnapKit (~> 4.0.0)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -57,6 +64,9 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - NVActivityIndicatorView (4.0.1):
+    - NVActivityIndicatorView/Presenter (= 4.0.1)
+  - NVActivityIndicatorView/Presenter (4.0.1)
   - SDWebImage (4.1.2):
     - SDWebImage/Core (= 4.1.2)
   - SDWebImage/Core (4.1.2)
@@ -66,6 +76,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - BMPlayer (~> 1.0.0)
   - Bolts
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -81,6 +92,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  BMPlayer: 44eebf06eb01450dd14ea74b27d07c5222f0eed1
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
@@ -96,11 +108,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   MJRefresh: 238e6a37e2dba12160ee3b79f6d2a2b26abcab42
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  NVActivityIndicatorView: 77ed6d7b571643e24899e7858bf9ae2ee4c21f31
   SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 46162171437dd41313d99f9b6f8a99b067f8f8e4
+PODFILE CHECKSUM: 6fbaba492fe57b7a5ef58c8d29dbc7b50c5af3b6
 
 COCOAPODS: 1.2.0

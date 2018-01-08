@@ -20,6 +20,9 @@ extension UINavigationController {
         self.navigationBar.tintColor = UIColor.white
         self.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Arial", size: 20)!,
                                                   NSAttributedStringKey.foregroundColor: UIColor.white]
+        
     }
+    
+
 }
 
