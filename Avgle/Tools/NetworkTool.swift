@@ -23,6 +23,8 @@ class NetworkTool: NSObject {
     
     let videoURL = "https://api.avgle.com/v1/videos/"
     
+    let videoSearchURL = "https://api.avgle.com/v1/search/"
+    
     // MARK: - Function
     
     // MARK:  讀取影片分類資料
@@ -119,6 +121,40 @@ class NetworkTool: NSObject {
                 }
                 SVProgressHUD.dismiss()
                 finished(true, hasMore, totalVideo, videosModelArr)
+            }
+        }
+    }
+    
+    // MARK: Search Video
+    func loadVideoDataWithSearch(query: String, page: Int, finished: @escaping(_ success: Bool, _ haseMore: Bool, _ data: [VideoModel]) -> ()) {
+        
+        SVProgressHUD.show(withStatus: NSLocalizedString("Loading...", comment: ""))
+
+        let url = videoSearchURL + query.urlEncoded() + "/" + String(page) + "?limit=50"
+
+        Alamofire.request(url, method: .get).responseJSON { (response) in
+            
+            guard response.result.isSuccess else {
+                
+                SVProgressHUD.show(withStatus: NSLocalizedString("Failed to load...", comment: ""))
+                finished(false, false, [])
+                SVProgressHUD.dismiss()
+                return
+            }
+            
+            let json = JSON(response.result.value!)
+            let hasMore: Bool = json["response"]["has_more"].bool!
+            if let result = json["response"]["videos"].array {
+             
+                var videos = [VideoModel]()
+                
+                for video in result {
+                    
+                    let oneVideo = VideoModel(dict: video.dictionaryObject!)
+                    videos.append(oneVideo)
+                }
+                SVProgressHUD.dismiss()
+                finished(true, hasMore, videos)
             }
         }
     }

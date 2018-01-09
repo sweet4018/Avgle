@@ -99,9 +99,11 @@ class VideosViewController: BaseViewController {
     
     fileprivate func setupNavBtn() {
         
-        let barButtonItem =  UIBarButtonItem(title: getNavleftBtnName(page: 1), style: .plain, target: self, action: #selector(clickNavigationLeftBtn))
-        barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: Theme.baseFontColor], for: .normal)
-        self.navigationItem.leftBarButtonItem = barButtonItem
+        let leftBarButtonItem = UIBarButtonItem(title: getNavleftBtnName(page: 1), style: .plain, target: self, action: #selector(clickNavigationLeftBtn))
+        leftBarButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: Theme.baseFontColor], for: .normal)
+        self.navigationItem.leftBarButtonItem = leftBarButtonItem
+        
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(clickNavigationRightBtn)), animated: true)
     }
 
     ///獲得Navigation 左方按鈕標題（因中文跟英文順序顛倒，英文:Page 1，中文:1頁）
@@ -190,6 +192,10 @@ class VideosViewController: BaseViewController {
     
     @objc func clickNavigationLeftBtn() {
         present(selectPageAlertController, animated: true, completion: nil)
+    }
+    
+    @objc func clickNavigationRightBtn() {
+        self.navigationController?.pushViewController(SearchVideosViewController(), animated: true)
     }
 }
 
