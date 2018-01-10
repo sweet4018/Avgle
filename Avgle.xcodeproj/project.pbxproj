@@ -26,7 +26,6 @@
 		DB118FA21FF3DF840035D9C4 /* LineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB118FA11FF3DF840035D9C4 /* LineButton.swift */; };
 		DB2C08901FF52E2300C4109D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */; };
 		DB2C08921FF5354200C4109D /* UITextField+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C08911FF5354200C4109D /* UITextField+Placeholder.swift */; };
-		DB2C08941FF5370300C4109D /* UINavigationController+Transparent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C08931FF5370300C4109D /* UINavigationController+Transparent.swift */; };
 		DB44067A1FF72B340026E321 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4406791FF72B340026E321 /* SignUpViewController.swift */; };
 		DB4406811FF72DB30026E321 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB4406831FF72DB30026E321 /* Localizable.strings */; };
 		DB4406861FF732300026E321 /* AlertControllerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4406851FF732300026E321 /* AlertControllerTool.swift */; };
@@ -94,7 +93,6 @@
 		DB118FA11FF3DF840035D9C4 /* LineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineButton.swift; sourceTree = "<group>"; };
 		DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		DB2C08911FF5354200C4109D /* UITextField+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Placeholder.swift"; sourceTree = "<group>"; };
-		DB2C08931FF5370300C4109D /* UINavigationController+Transparent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transparent.swift"; sourceTree = "<group>"; };
 		DB4406781FF729110026E321 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB4406791FF72B340026E321 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DB44067B1FF72D370026E321 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 			children = (
 				DB118FA11FF3DF840035D9C4 /* LineButton.swift */,
 				DB2C08911FF5354200C4109D /* UITextField+Placeholder.swift */,
-				DB2C08931FF5370300C4109D /* UINavigationController+Transparent.swift */,
 				DBFEF2B61FFCD30900F01A25 /* UIView+Extension.swift */,
 				DB0700401FFE089200499D1A /* String+URL.swift */,
 			);
@@ -631,7 +628,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB8843A01FFB2AC60084C319 /* LoginViewController.swift in Sources */,
-				DB2C08941FF5370300C4109D /* UINavigationController+Transparent.swift in Sources */,
 				DBEDCE181FC96FB500A097F7 /* MeViewController.swift in Sources */,
 				DB4406861FF732300026E321 /* AlertControllerTool.swift in Sources */,
 				DB5CA62D1FC945550013CD24 /* BaseTabBarViewController.swift in Sources */,

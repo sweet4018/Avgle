@@ -26,10 +26,11 @@ class SearchVideosViewController: BaseViewController {
     fileprivate lazy var searchController: UISearchController = {
        
         let search = UISearchController(searchResultsController: nil)
-        
         search.hidesNavigationBarDuringPresentation = false
-        search.searchBar.barTintColor = .darkGray
+        search.searchBar.barTintColor = Theme.baseBackgroundColor
         search.searchBar.delegate = self
+        let attributes = [NSAttributedStringKey.foregroundColor : Theme.baseFontColor]
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
         return search
     }()
     
@@ -80,7 +81,6 @@ class SearchVideosViewController: BaseViewController {
     // MARK: - Navigation
 
     override func setupNavigation() {
-        super.setupNavigation()
 
         self.title = NSLocalizedString("Search", comment: "")
         

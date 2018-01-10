@@ -39,6 +39,12 @@ class BaseViewController: UIViewController {
     
     open func setupNavigation() {
         
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Arial", size: 20)!,
+                                                                        NSAttributedStringKey.foregroundColor: UIColor.white]
     }
     
     // MARK: - Setup UI

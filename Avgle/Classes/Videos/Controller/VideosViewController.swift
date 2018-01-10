@@ -91,10 +91,18 @@ class VideosViewController: BaseViewController {
     //MARK: - Navigation
     
     override func setupNavigation() {
-        super.setupNavigation()
 
         self.title = NSLocalizedString("Videos", comment: "")
         setupNavBtn()
+        
+        // 這邊的Navigation比較特別需改造一下
+        self.navigationController?.navigationBar.barTintColor = Theme.baseBackgroundColor
+        self.navigationController?.navigationBar.backgroundColor = Theme.baseBackgroundColor
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.tintColor = Theme.baseFontColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Arial", size: 20)!,
+                                                                        NSAttributedStringKey.foregroundColor: Theme.baseFontColor]        
     }
     
     fileprivate func setupNavBtn() {
@@ -104,6 +112,7 @@ class VideosViewController: BaseViewController {
         self.navigationItem.leftBarButtonItem = leftBarButtonItem
         
         self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(clickNavigationRightBtn)), animated: true)
+        
     }
 
     ///獲得Navigation 左方按鈕標題（因中文跟英文順序顛倒，英文:Page 1，中文:1頁）

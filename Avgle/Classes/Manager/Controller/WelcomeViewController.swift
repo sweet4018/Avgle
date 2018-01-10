@@ -71,10 +71,8 @@ class WelcomeViewController: BaseViewController, GIDSignInDelegate, GIDSignInUID
     }
     
     @IBAction func googleLogin(_ sender: Any) {
-        //FIXME: Test
-        //GIDSignIn.sharedInstance().signIn()
         
-        goMainView(self)
+        GIDSignIn.sharedInstance().signIn()
     }
     
     //MARK: Google Login Delegate

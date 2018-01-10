@@ -30,6 +30,12 @@ class SignUpViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: -Navigation
+    
+    override func setupNavigation() {
+        super.setupNavigation()
+    }
+    
     // MARK: - Button Action    
     @IBAction func registerAccountAction(_ sender: Any) {
         

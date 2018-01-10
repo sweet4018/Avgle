@@ -27,6 +27,12 @@ class ResetPasswordViewController: BaseViewController {
     }
     
     
+    // MARK: -Navigation
+    
+    override func setupNavigation() {
+        super.setupNavigation()
+    }
+    
     //MARL: - Button Action
     @IBAction func resetPasswordAction(_ sender: Any) {
         

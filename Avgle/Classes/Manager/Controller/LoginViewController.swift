@@ -35,6 +35,13 @@ class LoginViewController: BaseViewController {
         emailTextField.becomeFirstResponder()
     }
     
+    
+    // MARK: -Navigation
+    
+    override func setupNavigation() {
+        super.setupNavigation()
+    }
+    
     //MARK: - Button Action
     
     @IBAction func login(_ sender: Any) {
@@ -78,8 +85,6 @@ class LoginViewController: BaseViewController {
             
             //呈現主畫面
             goMainView(self)
-//            UIApplication.shared.keyWindow?.rootViewController = BaseTabBarViewController()
-//            self.dismiss(animated: true, completion: nil)
         }
     }
     

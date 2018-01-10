@@ -40,11 +40,11 @@ class MeViewController: BaseViewController {
     fileprivate lazy var titleLb: UILabel = {
        
         let label = UILabel(frame: CGRect(x: kScreenWidth * 0.25,
-                                          y: kScreenHeight * 0.2,
+                                          y: kScreenHeight * 0.15,
                                           width: kScreenWidth * 0.5,
-                                          height: 30))
+                                          height: 35))
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont.systemFont(ofSize: 24)
         
         if let currentUser = Auth.auth().currentUser {
             
@@ -90,7 +90,7 @@ class MeViewController: BaseViewController {
         super.setUI()
         
         view.addSubview(backgroundImageView)
-        backgroundImageView.addSubview(titleLb)
+        view.addSubview(titleLb)
         view.addSubview(myCollectionBtn)
     }
     
@@ -98,20 +98,17 @@ class MeViewController: BaseViewController {
     
     @objc func clickNavRightBtn() {
         
-//        do {
-//            try Auth.auth().signOut()
-//        } catch {
-//
-//            AlertControllerTool.shared.showAlertViewWithOK(title: NSLocalizedString("Logout Error", comment: ""), message: error.localizedDescription, viewController: self)
-//            return
-//        }
+        do {
+            try Auth.auth().signOut()
+        } catch {
+
+            AlertControllerTool.shared.showAlertViewWithOK(title: NSLocalizedString("Logout Error", comment: ""), message: error.localizedDescription, viewController: self)
+            return
+        }
         
         let story: UIStoryboard? = UIStoryboard(name: "Main", bundle: nil)
-        
         if let viewController = story?.instantiateViewController(withIdentifier: "WelcomeView") {
-            
             UIApplication.shared.keyWindow?.rootViewController = viewController
-            
         }
     }
     
