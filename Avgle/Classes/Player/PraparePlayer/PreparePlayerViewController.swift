@@ -121,7 +121,10 @@ class PreparePlayerViewController: BaseViewController {
     // MARK: - Button Action
     
     @objc func cancelAction() {
+        
+        UIApplication.shared.setStatusBarHidden(false, with: .fade)
         dismiss(animated: true, completion: nil)
+        
     }
 
     @objc func watchFullVideo() {

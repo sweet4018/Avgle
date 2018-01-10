@@ -21,8 +21,8 @@ class BaseTabBarViewController: UITabBarController {
     fileprivate func setupAllChildViewController() {
         
         tabBarAddChildViewController(vc: VideosViewController(), title: "Videos", imageName: "tabBar_VideoCategories_0", selectedImageName: "tabBar_VideoCategories_0")
-        
-        tabBarAddChildViewController(vc: VideoCollectionsViewController(), title: "Video Collection", imageName: "tabBar_VideoCollections_0", selectedImageName: "tabBar_VideoCollections_0")
+                
+        tabBarAddChildViewController(vc: VideoCollectionsViewController(), title: "Videos Collection & Categories", imageName: "tabBar_VideoCollections_0", selectedImageName: "tabBar_VideoCollections_0")
         
         tabBarAddChildViewController(vc: MeViewController(), title: "Me", imageName: "tabBar_Me_0", selectedImageName: "tabBar_Me_1")
         

@@ -26,11 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Setup Google Login
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.makeKeyAndVisible()
-//        window?.rootViewController = BaseTabBarViewController()
 
+        //若有使用者直接進入主畫面
+        if Auth.auth().currentUser != nil {
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.makeKeyAndVisible()
+            window?.rootViewController = BaseTabBarViewController()
+        }
         
         return true
     }

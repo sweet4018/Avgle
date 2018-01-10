@@ -39,10 +39,7 @@ class BaseViewController: UIViewController {
     
     open func setupNavigation() {
         
-
     }
-    
-    
     
     // MARK: - Setup UI
     

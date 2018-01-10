@@ -67,7 +67,7 @@ class VideoCollectionsViewController: BaseViewController {
     override func setupNavigation() {
         super.setupNavigation()
         
-        self.title = NSLocalizedString("Videos", comment: "")
+        self.title = NSLocalizedString("Videos Collection & Categories", comment: "")
     }
 
     // MARK: - UI
@@ -101,8 +101,11 @@ class VideoCollectionsViewController: BaseViewController {
 
 extension VideoCollectionsViewController: RecommendedVideosViewDelegate {
     
+    // MARK: 點擊查看更多
     func recommendedVideosViewClickMoreBtn(btn: UIButton) {
         
+        let videoCollectionDetailVC = VideoCollectionDetailViewController()
+        self.navigationController?.pushViewController(videoCollectionDetailVC, animated: true)
     }
 }
 extension VideoCollectionsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

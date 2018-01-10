@@ -75,6 +75,7 @@ class BMPlayerCustomControlView: BMPlayerControlView {
     
     override func playStateDidChange(isPlaying: Bool) {
         super.playStateDidChange(isPlaying: isPlaying)
+
         
         playingStateLabel.text = isPlaying ? NSLocalizedString("Playing", comment: "") : NSLocalizedString("Paused", comment: "")
     }

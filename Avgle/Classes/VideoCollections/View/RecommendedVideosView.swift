@@ -24,7 +24,7 @@ class RecommendedVideosView: UIView {
     fileprivate lazy var titleLb: UILabel = {
         
         let label = UILabel(frame: CGRect(x: 15, y: 15, width: 0, height: 0))
-        label.text = NSLocalizedString("Recommended Video", comment: "")
+        label.text = NSLocalizedString("Recommended Collection", comment: "")
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.sizeToFit()

@@ -34,6 +34,9 @@
 		DB5CA62D1FC945550013CD24 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5CA62C1FC945550013CD24 /* BaseTabBarViewController.swift */; };
 		DB6283D31FC96B1100514164 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6283D21FC96B1100514164 /* BaseViewController.swift */; };
 		DB794A251FD2467C004E3C43 /* VideoCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB794A241FD2467C004E3C43 /* VideoCollectionModel.swift */; };
+		DB819A812004E2E300B56453 /* SearchTopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB819A7F2004E2E300B56453 /* SearchTopCollectionViewCell.swift */; };
+		DB819A822004E2E300B56453 /* SearchTopCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB819A802004E2E300B56453 /* SearchTopCollectionViewCell.xib */; };
+		DB819A842004FBC400B56453 /* VideoCollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB819A832004FBC400B56453 /* VideoCollectionDetailViewController.swift */; };
 		DB840ED02001C94A00CB974F /* PreparePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB840ECF2001C94A00CB974F /* PreparePlayerViewController.swift */; };
 		DB87E9F41FC9893100E28805 /* VideoCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB87E9F31FC9893100E28805 /* VideoCategoriesModel.swift */; };
 		DB8843A01FFB2AC60084C319 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB88439F1FFB2AC60084C319 /* LoginViewController.swift */; };
@@ -104,6 +107,9 @@
 		DB5CA62C1FC945550013CD24 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
 		DB6283D21FC96B1100514164 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DB794A241FD2467C004E3C43 /* VideoCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionModel.swift; sourceTree = "<group>"; };
+		DB819A7F2004E2E300B56453 /* SearchTopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTopCollectionViewCell.swift; sourceTree = "<group>"; };
+		DB819A802004E2E300B56453 /* SearchTopCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTopCollectionViewCell.xib; sourceTree = "<group>"; };
+		DB819A832004FBC400B56453 /* VideoCollectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionDetailViewController.swift; sourceTree = "<group>"; };
 		DB840ECF2001C94A00CB974F /* PreparePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparePlayerViewController.swift; sourceTree = "<group>"; };
 		DB87E9F31FC9893100E28805 /* VideoCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCategoriesModel.swift; sourceTree = "<group>"; };
 		DB88439F1FFB2AC60084C319 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +349,8 @@
 			children = (
 				DB07004A1FFE21C600499D1A /* VideosCollectionViewCell.swift */,
 				DB07004B1FFE21C600499D1A /* VideosCollectionViewCell.xib */,
+				DB819A7F2004E2E300B56453 /* SearchTopCollectionViewCell.swift */,
+				DB819A802004E2E300B56453 /* SearchTopCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -405,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				DBEDCE151FC96FAC00A097F7 /* VideoCollectionsViewController.swift */,
+				DB819A832004FBC400B56453 /* VideoCollectionDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -541,6 +550,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB819A822004E2E300B56453 /* SearchTopCollectionViewCell.xib in Resources */,
 				DB0D8A0D1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.xib in Resources */,
 				DB0528B01FC93AAC00C6CFE9 /* LaunchScreen.storyboard in Resources */,
 				DB4406811FF72DB30026E321 /* Localizable.strings in Resources */,
@@ -633,11 +643,13 @@
 				DB0D8A0C1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.swift in Sources */,
 				DBEDCE161FC96FAC00A097F7 /* VideoCollectionsViewController.swift in Sources */,
 				DB9F7879200208A500611A02 /* BMPlayerCustomControlView.swift in Sources */,
+				DB819A842004FBC400B56453 /* VideoCollectionDetailViewController.swift in Sources */,
 				DB2C08921FF5354200C4109D /* UITextField+Placeholder.swift in Sources */,
 				DB44067A1FF72B340026E321 /* SignUpViewController.swift in Sources */,
 				DB07004C1FFE21C600499D1A /* VideosCollectionViewCell.swift in Sources */,
 				DB117B4E1FFB5F17002FC397 /* ResetPasswordViewController.swift in Sources */,
 				DBFEF2B71FFCD30900F01A25 /* UIView+Extension.swift in Sources */,
+				DB819A812004E2E300B56453 /* SearchTopCollectionViewCell.swift in Sources */,
 				DBABDB511FC95A600035D1EF /* BaseNavigationViewController.swift in Sources */,
 				DBAB46902003CE0700A37375 /* SearchVideosViewController.swift in Sources */,
 				DB87E9F41FC9893100E28805 /* VideoCategoriesModel.swift in Sources */,

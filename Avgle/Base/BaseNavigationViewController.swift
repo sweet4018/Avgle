@@ -18,8 +18,8 @@ class BaseNavigationViewController: UINavigationController {
         setupNavigationStyle()
     }
     
-    func setupNavigationStyle() {
-
+    func setupNavigationStyle() {        
+        
         //設置導航列主題
         let navAppearance = UINavigationBar.appearance()
         // 設置導航titleView字體

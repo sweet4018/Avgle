@@ -17,20 +17,15 @@ class SearchVideosViewController: BaseViewController {
     
     var page: Int = 0
     
-    var testLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-    
-    
     struct PropertyKeys {
         
         static let collectionViewReuseIdentifier: String = "VideosCollectionViewCell"
+        static let topSearchcollectionViewReuseIdentifier: String = "SearchTopCollectionViewCell"
     }
     
     fileprivate lazy var searchController: UISearchController = {
        
         let search = UISearchController(searchResultsController: nil)
-        
-        
-        search.bar
         
         search.hidesNavigationBarDuringPresentation = false
         search.searchBar.barTintColor = .darkGray
@@ -41,6 +36,11 @@ class SearchVideosViewController: BaseViewController {
     fileprivate lazy var videos: [VideoModel] = {
         let video: Array = [VideoModel]()
         return video
+    }()
+    
+    fileprivate lazy var topSearchArr: [VideoCollectionModel] = {
+        let arr: Array = [VideoCollectionModel]()
+        return arr
     }()
     
     fileprivate lazy var mainCollectionView: UICollectionView = {
@@ -55,11 +55,21 @@ class SearchVideosViewController: BaseViewController {
         return collectionView
     }()
     
+    fileprivate lazy var topSearchCollectionView: UICollectionView = {
+        
+        let y: CGFloat = kNavigationBarHeight + 20 + 56 //56為searchBar高度
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: y, width: kScreenWidth, height: 30 * 6), collectionViewLayout: UICollectionViewFlowLayout()) //height:30 * 7 是因為一行30的高度有三筆資料總共只搜尋18筆
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: SearchTopCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: PropertyKeys.topSearchcollectionViewReuseIdentifier)
+        return collectionView
+    }()
+    
     // MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,7 +85,6 @@ class SearchVideosViewController: BaseViewController {
         self.title = NSLocalizedString("Search", comment: "")
         
         let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_0"), style: .plain, target: self, action: #selector(clickNavigationLeftBtn))
-        leftBarButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: Theme.baseFontColor], for: .normal)
         self.navigationItem.leftBarButtonItem = leftBarButtonItem
     }
     
@@ -88,8 +97,11 @@ class SearchVideosViewController: BaseViewController {
     override func setUI() {
         super.setUI()
         
+        loadDataWithTopSearch()
+        
         view.addSubview(searchController.searchBar)
         view.addSubview(mainCollectionView)
+        searchController.view.addSubview(topSearchCollectionView)
         
         setNeedsLayout()
     }
@@ -99,6 +111,7 @@ class SearchVideosViewController: BaseViewController {
     func setNeedsLayout() {
         
         mainCollectionView.snp.makeConstraints { (make) in
+            
             make.top.equalTo(view).offset(56) //SerachBar基本高度為56
             make.width.equalTo(view)
             make.bottom.equalTo(view)
@@ -137,33 +150,71 @@ class SearchVideosViewController: BaseViewController {
             self!.mainCollectionView.mj_footer.endRefreshing()
         }
     }
+    
+    fileprivate func loadDataWithTopSearch() {
+        
+        NetworkTool.share.loadVideoCollectionData(page: 0, limit: 21) { [weak self](success, hasMore, data) in
+            self!.topSearchArr = data
+            self!.topSearchCollectionView.reloadData()
+        }
+    }
 }
 
 extension SearchVideosViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return videos.count
+        
+        if collectionView == mainCollectionView {
+            return videos.count
+        } else {
+            return topSearchArr.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyKeys.collectionViewReuseIdentifier, for: indexPath) as! VideosCollectionViewCell
-        cell.video = videos[indexPath.item]
-        return cell
+        if collectionView == mainCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyKeys.collectionViewReuseIdentifier, for: indexPath) as! VideosCollectionViewCell
+            cell.video = videos[indexPath.item]
+            return cell
+        } else {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyKeys.topSearchcollectionViewReuseIdentifier, for: indexPath) as! SearchTopCollectionViewCell
+            if topSearchArr.count > 0 {
+                cell.videoCollectionModel = topSearchArr[indexPath.item]
+            }
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let preparePlayerVC = PreparePlayerViewController()
-        preparePlayerVC.video = videos[indexPath.item]
-        self.present(preparePlayerVC, animated: true, completion: nil)
+        if collectionView == mainCollectionView {
+            let preparePlayerVC = PreparePlayerViewController()
+            preparePlayerVC.video = videos[indexPath.item]
+            self.present(preparePlayerVC, animated: true, completion: nil)
+        } else {
+            let key: String = topSearchArr[indexPath.item].title!
+            searchController.searchBar.text = key
+            query = key
+            loadData(reset: true)
+            searchController.searchBar.endEditing(true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width: CGFloat = (kScreenWidth - 20) / 2
-        let height: CGFloat = width * 0.85
-        return CGSize(width: width, height: height)
+        if collectionView == mainCollectionView {
+            let width: CGFloat = (kScreenWidth - 20) / 2
+            let height: CGFloat = width * 0.85
+            return CGSize(width: width, height: height)
+        } else {
+            let width: CGFloat = (kScreenWidth - 20) / 3.5
+            let height: CGFloat = 30
+            return CGSize(width: width, height: height)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

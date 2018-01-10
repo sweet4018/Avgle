@@ -32,7 +32,7 @@ class VideosViewController: BaseViewController {
     
     fileprivate lazy var mainCollectionView: UICollectionView = {
         
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kTabBarHeight - kNavigationBarHeight), collectionViewLayout: UICollectionViewFlowLayout())
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: VideosCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: PropertyKeys.collectionViewReuseIdentifier)
@@ -78,7 +78,7 @@ class VideosViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //讀取資料
         loadDataWtihDropDown()
     }
@@ -131,20 +131,30 @@ class VideosViewController: BaseViewController {
         super.setUI()
         
         setCollectionView()
+        setNeedsLayout()
+    }
+    
+    // MARK: - Auto Layout
+    
+    func setNeedsLayout() {
+     
+        mainCollectionView.snp.makeConstraints { (make) in
+            make.bottom.leading.width.height.equalTo(view)
+        }
     }
     
     //MARK: UICollection
     fileprivate func setCollectionView() {
         
-        self.view.addSubview(mainCollectionView)
+        view.addSubview(mainCollectionView)
         
         //刷新
         let header = MJRefreshStateHeader(refreshingTarget: self, refreshingAction: #selector(dropDownLoad))
         header?.lastUpdatedTimeLabel.isHidden = false
-        self.mainCollectionView.mj_header = header
+        mainCollectionView.mj_header = header
 
         let footer = MJRefreshBackFooter(refreshingTarget: self, refreshingAction: #selector(pullUpLoad))
-        self.mainCollectionView.mj_footer = footer
+        mainCollectionView.mj_footer = footer
     }
     
     ///下拉刷新

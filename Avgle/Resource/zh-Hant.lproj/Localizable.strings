@@ -36,7 +36,7 @@
 
 "Video Categories" = "影片分類";
 
-"Video Collection" = "影片收藏";
+"Video Collection" = "影片合集";
 
 "Videos" = "影片";
 
@@ -48,7 +48,7 @@
 
 "Loading..." = "加載中...";
 
-"Recommended Video" = "推薦影片";
+"Recommended Collection" = "推薦合集";
 
 "See All" = "顯示更多";
 
@@ -71,3 +71,13 @@
 "Range" = "範圍";
 
 "Search" = "搜尋";
+
+"Videos Collection & Categories" = "影片集合及分類";
+
+"LOGOUT" = "登出";
+
+"Hello" = "你好";
+
+"Logout Error" = "登出失敗";
+
+"My Collection" = "我的收藏";
