@@ -18,15 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        //Setup Firebase
+        // Setup Firebase
         FirebaseApp.configure()
         
-        //Setup Facebook Login
+        // Setup Facebook Login
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        //Setup Google Login
+        // Setup Google Login
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-
+                        
         //若有使用者直接進入主畫面
         if Auth.auth().currentUser != nil {
             window = UIWindow(frame: UIScreen.main.bounds)

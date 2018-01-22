@@ -20,6 +20,7 @@
 		DB0700471FFE210E00499D1A /* VideosCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0700461FFE210E00499D1A /* VideosCategoriesView.swift */; };
 		DB07004C1FFE21C600499D1A /* VideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07004A1FFE21C600499D1A /* VideosCollectionViewCell.swift */; };
 		DB07004D1FFE21C600499D1A /* VideosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB07004B1FFE21C600499D1A /* VideosCollectionViewCell.xib */; };
+		DB0B407020161415003FAAEA /* MyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B406F20161415003FAAEA /* MyCollectionViewController.swift */; };
 		DB0D8A0C1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0D8A0A1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.swift */; };
 		DB0D8A0D1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB0D8A0B1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.xib */; };
 		DB117B4E1FFB5F17002FC397 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB117B4D1FFB5F17002FC397 /* ResetPasswordViewController.swift */; };
@@ -87,6 +88,7 @@
 		DB0700461FFE210E00499D1A /* VideosCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosCategoriesView.swift; sourceTree = "<group>"; };
 		DB07004A1FFE21C600499D1A /* VideosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosCollectionViewCell.swift; sourceTree = "<group>"; };
 		DB07004B1FFE21C600499D1A /* VideosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideosCollectionViewCell.xib; sourceTree = "<group>"; };
+		DB0B406F20161415003FAAEA /* MyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewController.swift; sourceTree = "<group>"; };
 		DB0D8A0A1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		DB0D8A0B1FFBCC5400CC1D14 /* VideoCategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoCategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
 		DB117B4D1FFB5F17002FC397 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		DB0528D81FC9408C00C6CFE9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DB0B406D2015E830003FAAEA /* MyCollection */,
 				DB840ECD2001C8DD00CB974F /* Player */,
 				DB2C088D1FF5284C00C4109D /* Manager */,
 				DB6283CC1FC96A5800514164 /* Videos */,
@@ -281,6 +284,22 @@
 				DB6283CE1FC96A8400514164 /* Me */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		DB0B406D2015E830003FAAEA /* MyCollection */ = {
+			isa = PBXGroup;
+			children = (
+				DB0B406E201613FE003FAAEA /* Controller */,
+			);
+			path = MyCollection;
+			sourceTree = "<group>";
+		};
+		DB0B406E201613FE003FAAEA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DB0B406F20161415003FAAEA /* MyCollectionViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		DB2C088D1FF5284C00C4109D /* Manager */ = {
@@ -657,6 +676,7 @@
 				DB0528A61FC93AAC00C6CFE9 /* AppDelegate.swift in Sources */,
 				DB6283D31FC96B1100514164 /* BaseViewController.swift in Sources */,
 				DB2C08901FF52E2300C4109D /* WelcomeViewController.swift in Sources */,
+				DB0B407020161415003FAAEA /* MyCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

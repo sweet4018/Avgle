@@ -114,6 +114,7 @@ class MeViewController: BaseViewController {
     
     @objc func clickMyCollectionBtn() {
         
+        navigationController?.pushViewController(MyCollectionViewController(), animated: true)        
     }
     
 }

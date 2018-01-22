@@ -9,10 +9,18 @@
 import UIKit
 import BMPlayer
 import SafariServices
+import Firebase
+import SVProgressHUD
 
 class PreparePlayerViewController: BaseViewController {
 
     // MARK: - Property
+    
+    /// 是否從收藏進來的，此頁面可由主頁及我的收藏兩個地方進來，分不同模式，在likeBtn有不同呈現
+    public var isFromCollection: Bool = false
+    
+    /// 若需要刪除會有key
+    public var dataKey: String = ""
     
     var video: VideoModel? {
         didSet {
@@ -23,6 +31,8 @@ class PreparePlayerViewController: BaseViewController {
             player.setVideo(resource: asset)
         }
     }
+    
+    var ref: DatabaseReference!
     
     fileprivate lazy var player: BMPlayer = {
        
@@ -53,7 +63,7 @@ class PreparePlayerViewController: BaseViewController {
         btn.backgroundColor = UIColor.clear
         btn.layer.borderWidth = 1
         btn.layer.borderColor = UIColor.white.cgColor
-        btn.setTitle("Cancel", for: .normal)
+        btn.setTitle(NSLocalizedString("Cancel", comment: "") , for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)                
         return btn
@@ -64,9 +74,21 @@ class PreparePlayerViewController: BaseViewController {
         let btn = UIButton(type: .custom)
         btn.layer.borderWidth = 1
         btn.layer.borderColor = UIColor.white.cgColor
-        btn.setTitle("Watch the video", for: .normal)
+        btn.setTitle(NSLocalizedString("Watch the video", comment: ""), for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.addTarget(self, action: #selector(watchFullVideo), for: .touchUpInside)
+        
+        return btn
+    }()
+    
+    fileprivate lazy var likeBtn: UIButton = {
+        
+        let btn = UIButton(type: .custom)
+        btn.layer.borderWidth = 1
+        btn.layer.borderColor = UIColor.white.cgColor
+        btn.setTitle(NSLocalizedString(isFromCollection ? "Delete The Video":"Add My Collection", comment: ""), for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.addTarget(self, action: #selector(likeAction(btn:)), for: .touchUpInside)
         
         return btn
     }()
@@ -79,6 +101,7 @@ class PreparePlayerViewController: BaseViewController {
         //Animation
         let scale = CGAffineTransform(scaleX: 0.0, y: 0.0)
         let translate = CGAffineTransform(translationX: 0, y: 500)
+        self.likeBtn.transform = scale.concatenating(translate)
         self.watchTheVideoBtn.transform = scale.concatenating(translate)
         self.cancelBtn.transform = scale.concatenating(translate)
         self.player.transform = scale.concatenating(translate)
@@ -95,6 +118,7 @@ class PreparePlayerViewController: BaseViewController {
         //Animation
         UIButton.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
             
+            self.likeBtn.transform = CGAffineTransform.identity
             self.watchTheVideoBtn.transform = CGAffineTransform.identity
             self.cancelBtn.transform = CGAffineTransform.identity
             self.player.transform = CGAffineTransform.identity
@@ -111,13 +135,20 @@ class PreparePlayerViewController: BaseViewController {
         view.addSubview(cancelBtn)
         view.addSubview(watchTheVideoBtn)
         view.addSubview(player)
+        view.addSubview(likeBtn)
         
         resetPlayerManager()
         
         setNeedsLayout()
+        
+        setData()
     }
     
-
+    func setData() {
+        
+        ref = Database.database().reference()
+    }
+    
     // MARK: - Button Action
     
     @objc func cancelAction() {
@@ -135,6 +166,43 @@ class PreparePlayerViewController: BaseViewController {
         self.present(safariVC, animated: true, completion: nil)
     }
     
+    @objc func likeAction(btn: UIButton) {
+        
+        btn.isEnabled = false
+                
+        SVProgressHUD.showProgress(2.0, status: NSLocalizedString("Loading...", comment: ""))
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            SVProgressHUD.dismiss()
+            btn.setTitle(NSLocalizedString(self.isFromCollection ? "Successfully deleted":"Added successfully", comment: ""), for: .normal)
+        }
+        
+        // 節點值
+        let childKey: String = (Auth.auth().currentUser?.displayName)! + "_" + (Auth.auth().currentUser?.uid)!
+        
+        if self.isFromCollection {
+            // 刪除            
+            ref.child(childKey).child(dataKey).removeValue()
+            
+        } else {
+            // 新增
+            
+            // 獲得現在日期
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "yyyyMMdd_hh:mm:ss"
+            let nowDate: String = dateFormatterPrint.string(from: Date())
+            
+            let dataDic: [String : Any] = ["title": video!.title!,
+                                           "duration": video!.duration!,
+                                           "likes": video!.likes!,
+                                           "dislikes": video!.dislikes!,
+                                           "embedded_url": video!.embedded_url!,
+                                           "preview_url": video!.preview_url!,
+                                           "preview_video_url": video!.preview_video_url!]
+            // 上傳Database
+            ref.child(childKey).child(nowDate).setValue(dataDic)
+            
+        }
+    }
     
     // MARK: - Player
     
@@ -150,7 +218,6 @@ class PreparePlayerViewController: BaseViewController {
      func setNeedsLayout() {
         
         cancelBtn.snp.makeConstraints { (make) in
-            
             make.bottom.equalTo(-30 * proportion).priority(1000)
             make.leading.equalTo(50)
             make.trailing.equalTo(-50)
@@ -160,6 +227,11 @@ class PreparePlayerViewController: BaseViewController {
         watchTheVideoBtn.snp.makeConstraints { (make) in
             make.width.height.centerX.equalTo(cancelBtn)
             make.bottom.equalTo(cancelBtn.snp.top).offset(-30)
+        }
+        
+        likeBtn.snp.makeConstraints { (make) in
+            make.width.height.centerX.equalTo(cancelBtn)
+            make.bottom.equalTo(watchTheVideoBtn.snp.top).offset(-30)
         }
         
         player.snp.makeConstraints { (make) in

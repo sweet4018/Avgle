@@ -14,6 +14,7 @@ pod 'FDFullscreenPopGesture', '~> 1.1'
 pod 'SwiftyJSON'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Firebase/Database'
   # Pods for Facebook
 pod 'Bolts'
 pod 'FBSDKCoreKit'
