@@ -27,6 +27,8 @@
 		DB118FA21FF3DF840035D9C4 /* LineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB118FA11FF3DF840035D9C4 /* LineButton.swift */; };
 		DB2C08901FF52E2300C4109D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */; };
 		DB2C08921FF5354200C4109D /* UITextField+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2C08911FF5354200C4109D /* UITextField+Placeholder.swift */; };
+		DB3231B3201632940063ACF7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3231B1201632940063ACF7 /* Crashlytics.framework */; };
+		DB3231B4201632940063ACF7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3231B2201632940063ACF7 /* Fabric.framework */; };
 		DB44067A1FF72B340026E321 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4406791FF72B340026E321 /* SignUpViewController.swift */; };
 		DB4406811FF72DB30026E321 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB4406831FF72DB30026E321 /* Localizable.strings */; };
 		DB4406861FF732300026E321 /* AlertControllerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4406851FF732300026E321 /* AlertControllerTool.swift */; };
@@ -95,6 +97,8 @@
 		DB118FA11FF3DF840035D9C4 /* LineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineButton.swift; sourceTree = "<group>"; };
 		DB2C088F1FF52E2300C4109D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		DB2C08911FF5354200C4109D /* UITextField+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Placeholder.swift"; sourceTree = "<group>"; };
+		DB3231B1201632940063ACF7 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		DB3231B2201632940063ACF7 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		DB4406781FF729110026E321 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB4406791FF72B340026E321 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DB44067B1FF72D370026E321 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -131,7 +135,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB3231B3201632940063ACF7 /* Crashlytics.framework in Frameworks */,
 				AC988B70FCCE03FFE9BD5588 /* Pods_Avgle.framework in Frameworks */,
+				DB3231B4201632940063ACF7 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +252,7 @@
 		DB0528D51FC93FF100C6CFE9 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				DB3231AC2016323C0063ACF7 /* Fabric */,
 				DB0528B11FC93AAC00C6CFE9 /* Info.plist */,
 				DB4406781FF729110026E321 /* GoogleService-Info.plist */,
 			);
@@ -319,6 +326,15 @@
 				DB117B4D1FFB5F17002FC397 /* ResetPasswordViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		DB3231AC2016323C0063ACF7 /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				DB3231B1201632940063ACF7 /* Crashlytics.framework */,
+				DB3231B2201632940063ACF7 /* Fabric.framework */,
+			);
+			path = Fabric;
 			sourceTree = "<group>";
 		};
 		DB6283CC1FC96A5800514164 /* Videos */ = {
@@ -469,6 +485,7 @@
 				DB0528A01FC93AAC00C6CFE9 /* Resources */,
 				C67516349DB7E27451002812 /* [CP] Embed Pods Frameworks */,
 				FD4CDC254C040562AE21E674 /* [CP] Copy Pods Resources */,
+				DB3BD22C20162FCB00D11A1D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -623,6 +640,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Avgle/Pods-Avgle-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		DB3BD22C20162FCB00D11A1D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 32c42bb941dbcd8d4847168e9ca288628256271e 121630f50c5cafca40e84635c2f9a552fd76a6e5d269bc49deb79e8aa30c403d";
 		};
 		FD4CDC254C040562AE21E674 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -860,6 +890,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7CU7LQBHA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Avgle/Other/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -877,6 +911,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7CU7LQBHA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Avgle/Other/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

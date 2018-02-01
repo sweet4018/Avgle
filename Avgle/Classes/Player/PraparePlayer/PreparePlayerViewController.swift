@@ -109,7 +109,7 @@ class PreparePlayerViewController: BaseViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // Dispose of any resources t hat can be recreated.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -252,13 +252,15 @@ class PreparePlayerViewController: BaseViewController {
 extension PreparePlayerViewController: BMPlayerDelegate {
     
     func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
-        player.snp.remakeConstraints { (make) in
+        player.snp.remakeConstraints { [weak self](make) in
             make.top.equalTo(view.snp.top)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
             if isFullscreen {
+                self?.likeBtn.isHidden = true
                 make.bottom.equalTo(view.snp.bottom)
             } else {
+                self?.likeBtn.isHidden = false
                 make.height.equalTo(view.snp.width).multipliedBy(9.0/16.0).priority(500)
             }
         }
